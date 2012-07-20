@@ -5,6 +5,7 @@
 		function __construct()
 		{
 			parent::__construct();
+			$this->load->database();
 		}
 		
 		function check_user($username, $password)
@@ -19,7 +20,7 @@
 			return $result;
 		}
 		
-		function add_user_high_school($nama, $ponsel, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
+		function add_user_high_school($nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{
 			$query = $this->db->query("SELECT contestant_id AS temp FROM contestant");
 			$result = $query->num_rows()+1;
@@ -37,7 +38,11 @@
 			$headers = "From:" . $from;
 			mail($email,$subject,$message,$headers);
 
-			$result = $this->db->query("INSERT into contestant(contestant_username,contestant_password) VALUES ('.$username.','.$hashpassword.')");
+			$this->db->query("INSERT INTO contestant_high_school(contestant_name,contestant_phone,contestant_address,contestant_email,".
+							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
+							"('".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
+			
+			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password) VALUES ('".$username."','".$hashpassword."')");
 			return $result;
 		}
 	}

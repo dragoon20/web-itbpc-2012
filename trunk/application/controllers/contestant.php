@@ -2,9 +2,13 @@
 
 class contestant extends CI_Controller{
 
-	public function login(){
+	function __construct()
+	{
+		parent::__construct();		
 		$this->load->helper('url');
-		$this->load->database();		
+	}
+
+	public function login(){
 		
 		if ((ISSET($_POST['username']))&&(ISSET($_POST['password'])))
 		{
@@ -33,27 +37,27 @@ class contestant extends CI_Controller{
 	}
 	
 	public function register_jpc(){
-		$isi['isi']='jpc_register';
-		$this->load->view('template',$isi);
-		
-		if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&
+	
+		if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&(ISSET($_POST['alamat']))&&
 			(ISSET($_POST['email']))&&(ISSET($_POST['kelas']))&&(ISSET($_POST['nama_sekolah']))&&
 			(ISSET($_POST['alamat_sekolah']))&&(ISSET($_POST['nama_pembimbing'])))
 		{
 			$this->load->model('contestantmodel','co');
-			$result = $this->co->add_user_high_school($_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['email'], 
+			$result = $this->co->add_user_high_school($_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], $_POST['email'], 
 														$_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $_POST['nama_pembimbing']);
-			echo $result;
+			if ($result != 0)
+			{
+				redirect('/welcome/index', 'refresh');
+			}
 		}
 		else
 		{
-			$isi['isi']='login';
+			$isi['isi']='jpc_register';
 			$this->load->view('template',$isi);
 		}
 	}
 	
 	public function logout(){
-		$this->load->helper('url');
 		session_start();
 		session_unset();
 		redirect('/welcome/index', 'refresh');
