@@ -58,5 +58,10 @@ class contestant extends CI_Controller{
 		session_unset();
 		redirect('/welcome/index', 'refresh');
 	}
+	
+	public function register_spc() {
+		$isi['isi']='spc_register';
+		$this->load->view('template',$isi); 
+	}
 }
 ?>
