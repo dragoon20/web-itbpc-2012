@@ -109,7 +109,7 @@ function formatresults2(){
 	}
 	else{ //else if target date/time met
 		var displaystring="" //Don't display any text
-		alert("Launch time!") //Instead, perform a custom alert
+		//alert("Launch time!") //Instead, perform a custom alert
 	}
 	return displaystring
 }
