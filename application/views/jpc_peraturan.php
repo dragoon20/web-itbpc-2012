@@ -1,6 +1,6 @@
 <?php 
 	// $link_html='itbspc_peraturan.html'; // ga dipake
-	$link_pdf='';
+	$link_pdf='../../data/jpc_peraturan.pdf';
 ?>
 
 <br />
