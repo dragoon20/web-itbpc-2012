@@ -59,11 +59,9 @@ Released   : 20120203
 		<div id="page-bgtop">
 			<div id="page-bgbtm">
 				<div id="content">
-					Error <br /><br />
 					<?php
 						echo $message;
 					?>
-					<br />
 				</div>
 				<!-- end #content -->
 				<div style="clear: both;">&nbsp;</div>
