@@ -122,14 +122,15 @@
 			$password = "JPC".$temp;
 			$hashpassword = md5($password);
 			
-			$this->db->query("INSERT INTO contestant_high_school(contestant_name,contestant_phone,contestant_address,contestant_email,".
-							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
-							"('".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
-			
 			$temp = mt_rand(100000,999999);
 			$code = date("YHsdim").$temp;
 			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password,contestant_type,contestant_code) VALUES ('".$username."','".$hashpassword."','1','".$code."')");
 
+			$this->db->query("INSERT INTO contestant_high_school(contestant_name,contestant_phone,contestant_address,contestant_email,".
+							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
+							"('".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
+			
+			
 			//email
 			include("Mail.php");
 			
@@ -166,14 +167,14 @@
 			$password = "SPC".$temp;
 			$hashpassword = md5($password);
 			
+			$temp = mt_rand(100000,999999);
+			$code = date("YHsdim").$temp;
+			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password,contestant_type,contestant_code) VALUES ('".$username."','".$hashpassword."','2','".$code."')");
+			
 			$this->db->query("INSERT INTO contestant_university(contestant_team_name,contestant_university_name,contestant_university_address,contestant_leader_name,".
 							"contestant_leader_phone,contestant_leader_email,contestant_second_name,contestant_third_name,contestant_supervisor_name) VALUES ".
 							"('".$nama_tim."','".$nama_universitas."', '".$alamat_universitas."','".$nama_anggota_satu."','".$ponsel_anggota_satu."','".$email_anggota_satu."','".$nama_anggota_dua."','".$nama_anggota_tiga."','".$nama_pembimbing."')");
 			
-			$temp = mt_rand(100000,999999);
-			$code = date("YHsdim").$temp;
-			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password,contestant_type,contestant_code) VALUES ('".$username."','".$hashpassword."','2','".$code."')");
-
 			//email
 			include("Mail.php");
 			
