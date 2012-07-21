@@ -44,13 +44,14 @@ Released   : 20120203
 				<ul>
 					<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
 					<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan & Regulasi");?></li>
-					<li><?php echo anchor("contestant/register_jpc","Pendaftaran");?></li>
+					<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
 				</ul>
 			</li>
 			<li><?php echo anchor("faq/faq_content","FAQ");?></li>
 			<li><?php 
 					if (isset($_SESSION['contestant_id']))
 					{
+						echo anchor("contestant/upload_kartu","Edit");
 						echo anchor("contestant/logout","Logout");
 					}
 					else

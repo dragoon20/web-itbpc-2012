@@ -16,6 +16,13 @@
 		
 		<input type="text" class="register" id="anggota_4" name="nama_pembimbing" placeholder="Nama Lengkap Dosen Pembimbing"> <br>
 		
+		<?php
+			require_once($_SERVER['DOCUMENT_ROOT'].'/itbpc2012/application/libraries/recaptchalib.php');
+			$publickey = "6LcNUdQSAAAAABwRmWD9DB5TySJP2TKFcg-F45Iy"; // you got this from the signup page
+			echo recaptcha_get_html($publickey);
+		?>
+		
+		<br />
 		<input type="submit" class="register_button" value="Daftar" style="float:right;"/>
 	</form>
 </div>
