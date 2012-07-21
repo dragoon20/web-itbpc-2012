@@ -3,6 +3,7 @@
 	$link_pdf='../../data/jpc_peraturan.pdf';
 ?>
 
+
 <br />
 	<b><i><h2>ITB Junior Programming Contest</h2></b></i>
 	</br>
@@ -13,4 +14,4 @@
 		
 	</p>
 <br />
-<iframe src="https://docs.google.com/file/d/0B2dLz5otTc7ORlFNUDc5SkxaSkU/preview" width="100%" height="450" style="border: none;"></iframe>
+<iframe src="https://docs.google.com/file/d/0B2dLz5otTc7OUGZMSllDRldCWmM/preview" width="98%" height="450" style="border: none;"></iframe>
