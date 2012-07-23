@@ -26,8 +26,9 @@ Released   : 20120203
 </head>
 <body>
 
-	<div id="page-background"><img src="<?php echo base_url("images/background.jpg"); ?>" width="100%" height="100%"></div>
+	<div id="page-background"><img src="<?php echo base_url("images/background1.png"); ?>" width="100%" height="100%"></div>
 	<div id="menu-wrapper">
+		<img src="<?php echo base_url("images/background2.png"); ?>" width="100%" height="100%">
 	</div>
 	
 	<div id="menu">

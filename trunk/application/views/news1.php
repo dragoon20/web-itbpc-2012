@@ -1,5 +1,5 @@
 <div class="post">
-	<b><h2 style="margin :0px">We're Back!</h2></b>
+	<b><i><h2 style="margin :0px">We're Back!</h2></i></b>
 	<br/>
 
 	<p>Setelah sukses dalam mengadakan <a href="http://itbpc.org/itbpc2011/"><b>ITB PROGRAMMING CONTEST 2011</b></a>, Institut Teknologi Bandung kembali mengadakan acara <b style="color:orange">ITB PROGRAMMING CONTEST 2012</b></a>. Acara ini diselenggarakan dengan mengangkat tema besar <b><i>"Code The World, Be Professional"</b></i>. Tema ini diangkat dilandaskan pada <!--keinginan untuk menghadirkan suatu kompetisi pemrograman dengan suatu standar baru yang lebih tinggi, sebagai salah satu cara untuk meningkatkan level kompetisi pemrograman di Indonesia, sehingga dapat memperkuat wakil Indonesia di ajang kompetisi Internasional.-->(. . .)<p>
