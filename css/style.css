@@ -5,7 +5,7 @@ http://www.freecsstemplates.org
 Released for free under a Creative Commons Attribution 2.5 License
 */
 
-#page-background { position:fixed; top:9%; left:0; width:100%; height:91%; z-index:0; }
+#page-background { position:fixed; top:0%; left:0; width:100%; height:100%; z-index:0; }
 body { margin: 0; padding: 0; font-family: 'Lucida Grande', Arial, sans-serif; font-size: 15px; color: #181B20;}
 
 h1, h2, h3 { margin: 0; padding: 0; font-family: 'Lucida Grande', Arial, sans-serif; font-weight: normal; color: black; color:#0674b1;}
@@ -34,7 +34,7 @@ img.aligncenter {margin: 0px auto;}
 
 /* LOGO
 ----------------------------------------------------------------------- */
-#logo { width: 980px; height: 100px; margin: 0px auto; padding: 80px 0px 0px 0px; color: #FFFFFF; }
+#logo { width: 980px; height: 100px; margin: 0px auto; padding: 80px 0px 0px 0px; color: #FFFFFF;}
 #logo h1, #logo p { display: block; margin: 0; padding: 0; }
 #logo h1 { margin: 0px; letter-spacing: -1px; text-align: center; text-transform: uppercase; font-size: 54px; font-weight: bold; color: #FFFFFF;}
 #logo h1 a { color: #FFFFFF; }
@@ -53,12 +53,13 @@ img.aligncenter {margin: 0px auto;}
 /* MENU
 --------------------------------------------------------------------------- */
 #menu-wrapper {
-	overflow: hidden;
+	/*overflow: hidden;
 	height: 60px;
-	background: #212121;
+	background: #FF8000;
+	*/
+	top:-8%; left:0; width:100%;
 	position: fixed;
 	z-index:1;
-	width:100%;
 }
 
 #menu {
@@ -83,37 +84,28 @@ img.aligncenter {margin: 0px auto;}
 #menu ul li a{ 
 	display: block;
 	float: left;
-	height: 60px;
+	height: 1px;
 	margin: 0px;
 	padding: 0px 30px 0px 30px;
 	line-height: 60px;
 	letter-spacing: -1px;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-family: 'Arvo', serif;
+	font-family: 'Arvo';
 	font-size: 14px;
 	font-weight: normal;
-	color: #B5B5B5;
+	color: #8A2908;
 	border: none;
 	white-space: nowrap;
 }
 #menu ul li a:hover{ 
-	text-decoration: none;
-	background-image: linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.2, rgb(255,102,0)),
-		color-stop(1, rgb(255,179,0))
-	);
-	color: white;
+	background: #FFA800;
+	background-position: 4px;
+	/*-webkit-border-bottom-right-radius: 10px;-webkit-border-bottom-left-radius: 10px;-moz-border-radius-bottomright: 10px;-moz-border-radius-bottomleft: 10px;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;
+	*/color: white;
     display: block;
+	height: 60px;
+	-webkit-transition: all 0.5s ease;-moz-transition: all 0.5s ease;-o-transition: all 0.5s ease;-ms-transition: all 0.5s ease;transition: all 0.5s ease;
 }
 #menu ul li ul { display: none;}
 #menu ul li:hover ul { 
@@ -129,7 +121,6 @@ img.aligncenter {margin: 0px auto;}
 	height: 30px;
 	line-height: 30px;
 	font-size: 13px;
-	border-top: 1px solid black;
 	width: 150px;
 }
 #menu ul li:hover ul li a:hover { 
@@ -273,7 +264,7 @@ img.aligncenter {margin: 0px auto;}
 	
 	text-align	: center;
 	font-size	: 12pt;
-	font-family : Arial, Helvetica, sans-serif;
+	font-family : Arial;
 }
 
 /* REGISTER

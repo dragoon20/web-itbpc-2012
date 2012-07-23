@@ -138,7 +138,7 @@ function formatresults2(){
 					<a href="#secpd_pendaftaran">Seminar</a><br />-->
 				</div>
 
-				<div id="cdcontainer"></div>
+				<!--<div id="cdcontainer"></div>
 
 				<script type="text/javascript">
 				//cdLocalTime("ID_of_DIV_container", "server_mode", LocaltimeoffsetMinutes, "target_date", "opt_debug_mode")
@@ -146,29 +146,31 @@ function formatresults2(){
 
 				//Note: "launchdate" should be an arbitrary but unique variable for each instance of a countdown on your page:
 
-				var launchdate=new cdLocalTime("cdcontainer", "server-php", 0, "July 10, 2012 19:58:00")
+				var launchdate=new cdLocalTime("cdcontainer", "server-php", 0, "September 10, 2012 23:59:59", "opt_debug_mode")
 				launchdate.displaycountdown("days", formatresults2)
-				</script>
+				</script>-->
 					
-				<div>	
-					<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.facebook.com%2Fitbpc&amp;
-							layout=button_count&amp;
-							show_faces=true&amp;
-							width=450&amp;
-							action=like&amp;
-							font&amp;
-							colorscheme=light&amp;"
-							
+				<div>
+					<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fitbpc&amp;
+						send=false&amp;
+						layout=button_count&amp;
+						width=450&amp;
+						show_faces=true&amp;
+						action=like&amp;
+						colorscheme=light&amp;
+						font&amp;
+						height=21" 
 						scrolling="no" 
 						frameborder="0" 
-						style="border:none; 
-							position: absolute;
-							align	: center;
-							margin-top: 30px;
-							margin-left: 450px;
-							height	:20px;" 
+						style="border:none;
+						overflow:hidden; 
+						margin-left: 450px;
+						margin-top: 30px;
+						width:450px; 
+						height:21px;" 
 						allowTransparency="true">
-					</iframe>
+					</iframe>				
+					
 				</div>
 			</div>
 		

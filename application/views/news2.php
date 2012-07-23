@@ -1,5 +1,5 @@
 <div class="post">
-	<b><h2 style="margin :0px">Pendaftaran ITBPC 2012 Telah Dibuka!</h2></b>
+	<b><i><h2 style="margin :0px">Pendaftaran ITBPC 2012 Telah Dibuka!</h2></i></b>
 	<br/>
 
 	<p>Pendaftaran <b style="color:orange">ITB Programming Contest 2012</b> dibuka sampai dengan <b style="font-size:1.1em">(. . .)</b>!<br/>
