@@ -23,4 +23,3 @@
 
 	</form>
 </div>
-<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>"> </script>

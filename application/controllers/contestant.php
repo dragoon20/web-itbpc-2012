@@ -37,9 +37,8 @@ class contestant extends CI_Controller{
 		}
 	}
 	
-	public function upload_kartu(){
-		$this->load->helper(array('form', 'url'));
-		$isi['isi']='upload_kartu_pelajar';
+	public function upload_data(){
+		$isi['isi']='upload_data';
 		$this->load->view('template',$isi);
 	}
 	
@@ -57,21 +56,14 @@ class contestant extends CI_Controller{
 
 		if ( ! $this->upload->do_upload())
 		{
-			$error = array('error' => $this->upload->display_errors());
-			echo $error['error'];
-			$isi['message']='Upload gagal.';
-			$this->load->view('error',$isi);
+			//$error = array('error' => $this->upload->display_errors());
+			//echo $error['error'];
+			echo "fail";
 		}
 		else
 		{
-			redirect('/welcome/index', 'refresh');
+			echo "success";
 		}
-	}
-	
-	public function upload_bukti(){
-		$this->load->helper(array('form', 'url'));
-		$isi['isi']='upload_bukti_pembayaran';
-		$this->load->view('template',$isi);
 	}
 	
 	public function upload_bukti_pembayaran(){
@@ -88,12 +80,11 @@ class contestant extends CI_Controller{
 
 		if ( ! $this->upload->do_upload())
 		{
-			$isi['message']='Upload gagal.';
-			$this->load->view('error',$isi);
+			echo "fail";
 		}
 		else
 		{
-			redirect('/welcome/index', 'refresh');
+			echo "success";
 		}
 	}
 	

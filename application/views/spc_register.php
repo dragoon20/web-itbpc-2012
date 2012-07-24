@@ -31,7 +31,6 @@
 		<input type="submit" class="register_button" value="Daftar" style="float:right;"/>
 	</form>
 </div>
-<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>"> </script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#anggota_2').hide();
