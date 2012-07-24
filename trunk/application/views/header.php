@@ -120,10 +120,10 @@ function formatresults2(){
 
 
 
-<div id="header-wrapper">
+	<div id="header-wrapper">
 		<div id="header">
 			<div id="logo">
-				<h1><img src="<?php echo base_url("images/itbpc2012.png"); ?>" width=20%></h1>
+				<h1><img src="<?php echo base_url("images/itbpc2012.png"); ?>" width=21%></h1>
 			</div>
 			
 			<div id="hd_txt">
