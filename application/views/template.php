@@ -26,9 +26,8 @@ Released   : 20120203
 </head>
 <body>
 
-	<div id="page-background"><img src="<?php echo base_url("images/background1.png"); ?>" width="100%" height="100%"></div>
-	<div id="menu-wrapper">
-		<img src="<?php echo base_url("images/background2.png"); ?>" width="100%" height="100%">
+	<!--<div id="page-background"><img src="<?php echo base_url("images/background.jpg"); ?>" width="100%" height="100%"></div>-->
+	<div id="menu-wrapper" class="one-edge-shadow">
 	</div>
 	
 	<div id="menu">
@@ -52,7 +51,6 @@ Released   : 20120203
 			<li><?php 
 					if (isset($_SESSION['contestant_id']))
 					{
-						echo anchor("contestant/upload_kartu","Edit");
 						echo anchor("contestant/logout","Logout");
 					}
 					else

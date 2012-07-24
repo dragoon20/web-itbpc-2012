@@ -1,6 +1,6 @@
 <div class="post">
 </br>
-	<b><i><h2>ITB Senior Programming Contest</h2></i></b> 
+	<b><h2>ITB Senior Programming Contest</h2></b> 
 	</br>
 	<p>
 		adalah kontes pemrograman untuk <b>mahasiswa tingkat S1</b> di perguruan tinggi seluruh Indonesia, kontestan adalah <b>tim yang terdiri dari maksimal 3 orang </b>dan terdaftar sebagai mahasiswa tingkat S1 di perguruan tinggi yang mereka wakili terhitung dari 1 Juli 2012.
