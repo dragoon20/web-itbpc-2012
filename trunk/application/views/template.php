@@ -12,20 +12,26 @@ Released   : 20120203
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Limitless by FCT</title>
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-<?php
-	$this->load->helper('HTML');
-	$this->load->helper('url');
-	echo link_tag('css/style.css');
-	session_start();
-?>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Limitless by FCT</title>
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	<?php
+		$this->load->helper('HTML');
+		$this->load->helper('url');
+		echo link_tag('css/style.css');
+		session_start();
+	?>
+	<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>" > </script>
+	<script type="text/javascript" src="<?php echo base_url("js/all.js");?>" > </script>
 </head>
 <body>
-
+	
+	<div id="blacktrans">&nbsp;</div> 	
+	
+	<img src="<?php echo base_url("images/ajax-loader.gif");?>" id="loader">
+	
 	<!--<div id="page-background"><img src="<?php echo base_url("images/background.jpg"); ?>" width="100%" height="100%"></div>-->
 	<div id="menu-wrapper" class="one-edge-shadow">
 	</div>
@@ -51,6 +57,7 @@ Released   : 20120203
 			<li><?php 
 					if (isset($_SESSION['contestant_id']))
 					{
+						echo anchor("contestant/upload_data","Edit Data");
 						echo anchor("contestant/logout","Logout");
 					}
 					else
