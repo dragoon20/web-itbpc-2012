@@ -1,8 +1,6 @@
 <form action="/itbpc2012/index.php/contestant/login" method="POST">
-
-	<label>Username &nbsp &nbsp &nbsp </label><input type="text" name="username" placeholder="Username"/> <br />
-	<label>Password &nbsp &nbsp &nbsp </label><input type="password" name="password" placeholder="Password"/> <br />
+	<input type="text" name="username" placeholder="USERNAME"/> <br />
+	<input type="password" name="password" placeholder="PASSWORD"/> <br />
 	</br>
 	<input type="submit" value="Login" />
-
 </form>

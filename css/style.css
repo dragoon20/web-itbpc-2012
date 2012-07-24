@@ -17,7 +17,7 @@ h2 { font-size: 2.4em;}
 h3 { font-size: 1.6em; }
 p, ul, ol { margin-top: 0; line-height: 180%; }
 a { text-decoration: none; color: #848484;}
-a:hover { text-decoration: underline; }
+a:hover { text-decoration: none; }
 img.border { border: 6px solid #EEE7DF; }
 img.alignleft { float: left;margin-right: 25px;}
 img.alignright {float: right;}
@@ -57,7 +57,7 @@ img.aligncenter {margin: 0px auto;}
 --------------------------------------------------------------------------- */
 #menu-wrapper { overflow: hidden; height: 60px; background: #007cc2; position: fixed; z-index:1; width:100%; }
 #menu { width: 960px; position: relative; margin-left: auto; margin-right:auto; z-index:1; }
-#menu ul{  margin: 0; padding: 0; list-style: none; line-height: normal; }
+#menu ul{ margin: 0; padding: 0; list-style: none; line-height: normal; }
 #menu ul li{ position: relative; float: left;margin-right: 1px; display: block; }
 #menu ul li a{ display: block; float: left; height: 60px; margin: 0px;
 	padding: 0px 30px 0px 30px; line-height: 60px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase;
@@ -111,25 +111,10 @@ img.aligncenter {margin: 0px auto;}
 
 #page {
 	-webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; border:4px;
-	width: 980px;
-	margin: 0 auto;
-	padding: 0;
-	background-color:#fff;/*#c0d4ea;*/
-	/*
-	background-image: linear-gradient(bottom, rgb(158,158,158) 5%, rgb(212,212,212) 20%);
-	background-image: -o-linear-gradient(bottom, rgb(158,158,158) 5%, rgb(212,212,212) 20%);
-	background-image: -moz-linear-gradient(bottom, rgb(158,158,158) 5%, rgb(212,212,212) 20%);
-	background-image: -webkit-linear-gradient(bottom, rgb(158,158,158) 5%, rgb(212,212,212) 20%);
-	background-image: -ms-linear-gradient(bottom, rgb(158,158,158) 5%, rgb(212,212,212) 20%);
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.05, rgb(158,158,158)),
-		color-stop(0.2, rgb(212,212,212))
-	); 
-	opacity: 0.8;*/
-	
+	width: 980px; margin: 0 auto; padding: 0; background-color:#fff;
+	-webkit-box-shadow: -1px 0px 9px rgba(50, 50, 50, 0.18);
+	-moz-box-shadow:-1px 0px 9px rgba(50, 50, 50, 0.18);
+	box-shadow:-1px 0px 9px rgba(50, 50, 50, 0.18); 
 }
 
 #page-bgtop {
@@ -214,31 +199,10 @@ img.aligncenter {margin: 0px auto;}
 /* Footer*/
 
 #footer{
-	position	: relative;
-	width	: 100%
-	height	: auto;
-	
-	margin-top		: auto;
-	margin-left		: auto;
-	margin-right	: auto;
-	margin-bottom	: auto;
-	
-	padding-top		: 10px;	
-	padding-bottom	: 15px;
-	
-	
-	color		: #000;
-	//-moz-border-radius: 20px;
-	//border-radius: 20px;
-	
-	//background: url("images/footer.png") repeat-x scroll 50% bottom #FFFFFF;
-	color		: #FFFFFF;
-	text-shadow: 2px 2px 2px #000;
-	//background-color	: #9AcCe0;
-	opacity	: 1;
-	
-	text-align	: center;
-	font-size	: 12pt;
+	position: relative; width: 100%; height:auto;
+	margin-top:auto; margin-left:auto; margin-right:auto; margin-bottom:auto;
+	padding-top:10px;padding-bottom:15px;
+	color		: gray; text-align:center; font-size:12pt;
 	font-family : Arial, Helvetica, sans-serif;
 }
 
@@ -256,6 +220,13 @@ img.aligncenter {margin: 0px auto;}
 ---------------------------------------------------------- */
 .hidden {visibility:hidden;}
 .none {display:none;}
+.left {float:left;}
+.right {float:right;}
+.clear {clear:both;}
+.bold {font-weight:bold;}
+
+/* LINK BUTTON 
+------------------------------------------------------------ */
 .link_orange {background-color:#ec7426; color:#fff; padding-left:10px; padding-right:10px; padding-top:8px; padding-bottom:8px; 
 text-decoration:none;border-radius:20px;-webkit-border-radius:20px;-moz-border-radius:20px;
 -webkit-box-shadow: 2px 3px 5px rgba(50, 50, 50, 0.17);
@@ -280,3 +251,11 @@ letter-spacing:1px; font-size:17px;font-weight:bold;}
 .one-edge-shadow { -webkit-box-shadow: 0px 6px 5px rgba(50, 50, 50, 0.3);
 -moz-box-shadow:    0px 6px 5px rgba(50, 50, 50, 0.3);
 box-shadow:         0px 6px 5px rgba(50, 50, 50, 0.3); }
+
+/* LOGIN FORM
+----------------------------------------------------------------- */
+#login_box {width:300px; height:170px;display:block; background-color:#007bc2; z-index:3; position:absolute;
+	right:0px; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius: 5px; }
+#login_form {margin-top:20px;}
+.input {	width:80%; margin-left:20px; padding-top:7px;padding-bottom:7px;padding-left:8px;padding-right:8px; }
+#login_button {width:87%; margin-left:20px; padding-top:7px;padding-bottom:7px;padding-left:8px;padding-right:8px;}
