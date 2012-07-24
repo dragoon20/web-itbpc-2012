@@ -37,8 +37,20 @@ class contestant extends CI_Controller{
 		}
 	}
 	
-	public function upload_data(){
-		$isi['isi']='upload_data';
+	public function edit_data_jpc(){
+		
+		$this->load->model('contestantmodel','co');
+		$isi['isi']='jpc_edit_data';
+		$this->load->view('template',$isi);
+	}
+	
+	public function upload_data_sma(){
+		$isi['isi']='upload_data_sma';
+		$this->load->view('template',$isi);
+	}
+	
+	public function upload_data_universitas(){
+		$isi['isi']='upload_data_universitas';
 		$this->load->view('template',$isi);
 	}
 	

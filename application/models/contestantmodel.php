@@ -22,6 +22,18 @@
 			$this->from = "ITBPC Official 2012 <itbpc.official@gmail.com>";
 		}
 		
+		function get_data_junior($id)
+		{
+			$query = $this->db->query("SELECT contestant_id,contestant_type FROM contestant WHERE contestant_username = '".$username."' AND contestant_password = '".$password."'");
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$result['id'] = $row->contestant_id;
+				$result['type'] = $row->contestant_type;
+			}
+			return $result;
+		}
+		
 		function check_user($username, $password)
 		{
 			$password = md5($password);
