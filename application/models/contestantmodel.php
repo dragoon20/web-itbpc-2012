@@ -304,7 +304,6 @@
 					$link = base_url("uploads/bukti/Bukti".$id);
 				}
 			}
-			}
 			$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
 			
 			return $result;
