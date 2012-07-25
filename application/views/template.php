@@ -50,14 +50,14 @@ Released   : 20120203
 					<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
 						<ul class="sub_menu">
 							<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
-							<li><?php echo anchor("seniorpc/spc_peraturan","Peraturan & Regulasi");?></li>
+							<li><a href="<?php echo base_url("seniorpc/spc_peraturan");?>"> Peraturan & <br> <div style="margin-top:-15px;">Regulasi</div> </a> </li>
 							<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
 						</ul>
 					</li>
 					<li id="junior_navigation"><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
 						<ul class="sub_menu">
 							<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
-							<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan & Regulasi");?></li>
+							<li><a href="<?php echo base_url("juniorpc/jpc_peraturan");?>"> Peraturan & <br> <div style="margin-top:-15px;">Regulasi</div> </a> </li>
 							<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
 						</ul>
 					</li>
