@@ -20,6 +20,7 @@ Released   : 20120203
 		<?php
 			$this->load->helper('HTML');
 			$this->load->helper('url');
+			$_SESSION['url'] = current_url();
 			echo link_tag('css/style.css');
 		?>
 		<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>" > </script>
@@ -29,6 +30,10 @@ Released   : 20120203
 		
 		<div id="blacktrans">&nbsp;</div> 	
 		
+		<?php 
+			if (!isset($_SESSION['contestant_id']))
+			{
+			?>
 		<div id="login_box" class="right" style="top:50px;">
 			<form id="login_form" action="/itbpc2012/index.php/contestant/login" method="POST">
 				<input class="input" type="text" name="username" placeholder="USERNAME"/> <br />
@@ -37,7 +42,10 @@ Released   : 20120203
 				<input type="submit" value="Login" id="login_button"/>
 			</form>
 			<a style="text-decoration:none; margin-left:20px; color:white;" href="<?php echo base_url("contestant/forgot_password");?>">Lupa Password</a>
-		</div>		
+		</div>
+			<?php
+			}
+			?>
 		
 		<img src="<?php echo base_url("images/ajax-loader.gif");?>" id="loader"> 
 		
@@ -47,13 +55,6 @@ Released   : 20120203
 				<ul>
 					<li id="home_navigation" class="current_menu"><?php echo anchor("welcome/index","Home");?></li>
 					<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
-					<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
-						<ul class="sub_menu">
-							<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
-							<li><a href="<?php echo base_url("seniorpc/spc_peraturan");?>"> Peraturan & <br> <div style="margin-top:-15px;">Regulasi</div> </a> </li>
-							<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
-						</ul>
-					</li>
 					<li id="junior_navigation"><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
 						<ul class="sub_menu">
 							<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
@@ -61,7 +62,13 @@ Released   : 20120203
 							<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
 						</ul>
 					</li>
-					
+					<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
+						<ul class="sub_menu">
+							<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
+							<li><a href="<?php echo base_url("seniorpc/spc_peraturan");?>"> Peraturan & <br> <div style="margin-top:-15px;">Regulasi</div> </a> </li>
+							<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
+						</ul>
+					</li>					
 					<li id="faq_navigation"><?php echo anchor("faq/faq_content","FAQ");?></li>
 				</ul>
 			</div>

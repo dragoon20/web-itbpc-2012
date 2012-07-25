@@ -22,7 +22,7 @@ class contestant extends CI_Controller{
 				$_SESSION['contestant_id'] = $result['id'];
 				$_SESSION['contestant_type'] = $result['type'];
 				$_SESSION['contestant_username'] = $_POST['username'];
-				redirect('/welcome/index', 'refresh');
+				redirect($_SESSION['url'], 'refresh');
 			}
 			else
 			{
@@ -123,7 +123,7 @@ class contestant extends CI_Controller{
 																 $_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $nama_pembimbing);														
 					if ($result != 0)
 					{
-						redirect('/welcome/index', 'refresh');
+						redirect(base_url('contestant/halaman_jpc'), 'refresh');
 					}
 				}
 				else
@@ -195,7 +195,7 @@ class contestant extends CI_Controller{
 																
 					if ($result != 0)
 					{
-						redirect('/welcome/index', 'refresh');
+						redirect(base_url('contestant/halaman_spc'), 'refresh');
 					}
 				}
 				else
@@ -368,7 +368,10 @@ class contestant extends CI_Controller{
 					
 					if ($result != null)
 					{
-						redirect('/welcome/index', 'refresh');
+						if ($_SESSION['contestant_type']==1)
+							redirect(base_url('contestant/halaman_jpc'), 'refresh');
+						else
+							redirect(base_url('contestant/halaman_spc'), 'refresh');
 					}
 					else
 					{
@@ -552,7 +555,10 @@ class contestant extends CI_Controller{
 																	
 						if ($result != 0)
 						{
-							redirect('/welcome/index', 'refresh');
+							$isi['isi']='pesan';
+							$isi['message']='Selamat anda telah berhasil registrasi ITB Junior Programming Contest.<br />'.
+											'Sebuah pesan telah dikirimkan ke email anda. Silahkan cek email anda.';
+							$this->load->view('template',$isi);
 						}
 						else
 						{
@@ -617,7 +623,7 @@ class contestant extends CI_Controller{
 						array_push($error,"Email Anggota Tim #1 harus diisi.");
 					else
 					{
-						if (!((strpos($_POST['email_anggota_satu'],'@'),)&&(strpos($_POST['email_anggota_satu'],'.'))))
+						if (!((strpos($_POST['email_anggota_satu'],'@'))&&(strpos($_POST['email_anggota_satu'],'.'))))
 						{
 							array_push($error,"Email Anggota Tim #1 harus diisi dengan format yang benar.");
 						}
@@ -647,7 +653,10 @@ class contestant extends CI_Controller{
 																
 						if ($result != 0)
 						{
-							redirect('/welcome/index', 'refresh');
+							$isi['isi']='pesan';
+							$isi['message']='Selamat anda telah berhasil registrasi ITB Senior Programming Contest.<br />'.
+											'Sebuah pesan telah dikirimkan ke email anda. Silahkan cek email anda.';
+							$this->load->view('template',$isi);
 						}
 					}
 				}
