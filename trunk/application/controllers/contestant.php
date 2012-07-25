@@ -617,7 +617,7 @@ class contestant extends CI_Controller{
 						array_push($error,"Email Anggota Tim #1 harus diisi.");
 					else
 					{
-						if (!((strpos('@',$_POST['email_anggota_satu']))&&(strpos('.',$_POST['email_anggota_satu']))))
+						if (!((strpos($_POST['email_anggota_satu'],'@'),)&&(strpos($_POST['email_anggota_satu'],'.'))))
 						{
 							array_push($error,"Email Anggota Tim #1 harus diisi dengan format yang benar.");
 						}
