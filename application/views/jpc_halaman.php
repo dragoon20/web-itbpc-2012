@@ -24,5 +24,6 @@
 	<div style="margin-top:20px;">
 		<a class="link_blue" href = "<?php echo base_url("contestant/edit_data_jpc");?>">Edit Data</a>
 		<a style="margin-left:20px;" class="link_blue" href = "<?php echo base_url("contestant/upload_data_sma");?>">Upload Data</a>
+		<a style="margin-left:20px;" class="link_blue" href = "<?php echo base_url("contestant/change_password");?>">Ubah Password</a>
 	</div>
 </div>
