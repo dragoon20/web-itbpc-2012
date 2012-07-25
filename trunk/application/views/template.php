@@ -37,25 +37,54 @@ Released   : 20120203
 				</br>
 				<input type="submit" value="Login" id="login_button"/>
 			</form>
-		</div>
+		</div>		
 		
 		<img src="<?php echo base_url("images/ajax-loader.gif");?>" id="loader"> 
 		
 		<!--<div id="page-background"><img src="<?php echo base_url("images/background.jpg"); ?>" width="100%" height="100%"></div>-->
 		<div id="menu-wrapper" class="one-edge-shadow">
+			<div id="menu">
+				<ul>
+					<li id="home_navigation" class="current_menu"><?php echo anchor("welcome/index","Home");?></li>
+					<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
+						<ul class="sub_menu">
+							<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
+							<li><?php echo anchor("seniorpc/spc_peraturan","Peraturan & Regulasi");?></li>
+							<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
+						</ul>
+					</li>
+					<li id="junior_navigation"><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
+						<ul class="sub_menu">
+							<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
+							<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan & Regulasi");?></li>
+							<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
+						</ul>
+					</li>
+					<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
+					<li id="faq_navigation"><?php echo anchor("faq/faq_content","FAQ");?></li>
+				</ul>
+			</div>
+			
 			<div style="font-size: 17px; padding: 0px 0px 0px 0px; line-height: 60px; letter-spacing: 1px;" class="right">
 				<?php 
 					if (isset($_SESSION['contestant_id']))
 					{
+						?>
+						<a href="echo base_url("contestant/logout");" style="color:#fff;display:block;width:70px;float:right; margin-right:20px;"> LOGOUT </a>
+						<?php
+
 						if ($_SESSION['contestant_type'] == '1')
 						{
-							echo anchor("contestant/upload_data_sma","Edit Data");
+							?>
+							<a href="echo base_url("contestant/upload_data_sma");" style="color:#fff;display:block;width:120px;"> EDIT DATA </a>
+							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '2')
 						{
-							echo anchor("contestant/upload_data_universitas","Edit Data");
+							?>
+							<a href="echo base_url("contestant/upload_data_universitas");" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<?php
 						}
-						echo anchor("contestant/logout","Logout");
 					}
 					else
 					{?>
@@ -65,29 +94,8 @@ Released   : 20120203
 				?>
 			</div>
 		</div>
-		<div id="menu">
-			<ul>
-				<li id="home_navigation" class="current_menu"><?php echo anchor("welcome/index","Home");?></li>
-				<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
-					<ul>
-						<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
-						<li><?php echo anchor("seniorpc/spc_peraturan","Peraturan &<br> Regulasi");?></li>
-						<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
-					</ul>
-				</li>
-				<li id="junior_navigation"><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
-					<ul>
-						<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
-						<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan &<br> Regulasi");?></li>
-						<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
-					</ul>
-				</li>
-				<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
-				<li id="faq_navigation"><?php echo anchor("faq/faq_content","FAQ");?></li>
-			</ul>
-		</div>
 		<!-- end #menu -->
-
+		
 		<div id="wrapper">
 			<?php echo $this->load->view('header'); ?>
 			<div id="page">
