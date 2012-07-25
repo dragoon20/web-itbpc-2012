@@ -37,26 +37,46 @@ class contestant extends CI_Controller{
 		}
 	}
 	
+	public function halaman_jpc()
+	{
+		$this->load->model('contestantmodel','co');
+		$isi['isi']='jpc_halaman';
+		$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
+		$this->load->view('template',$isi);
+	}
+	
+	public function halaman_spc()
+	{
+		$this->load->model('contestantmodel','co');
+		$isi['isi']='spc_halaman';
+		$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
+		$this->load->view('template',$isi);
+	}
+	
 	public function edit_data_jpc(){
 		
+		session_start();
 		if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&(ISSET($_POST['alamat']))&&
 			(ISSET($_POST['email']))&&(ISSET($_POST['kelas']))&&(ISSET($_POST['nama_sekolah']))&&
 			(ISSET($_POST['alamat_sekolah'])))
 		{
 			$this->load->model('contestantmodel','co');
 			$nama_pembimbing = (ISSET($_POST['nama_pembimbing'])) ? $_POST['nama_pembimbing'] : "";
-			session_start();
 			if (ISSET($_SESSION['contestant_id']))
 			{
-				$result = $this->co->update_user_high_school($_SESSION['contestant_id'],$_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], 
-															$_POST['email'], $_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $nama_pembimbing);														
-				if ($result != 0)
+				if ($_SESSION['contestant_type']==1)
 				{
-					redirect('/welcome/index', 'refresh');
+					$result = $this->co->update_user_high_school($_SESSION['contestant_id'],$_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], 
+																$_POST['email'], $_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $nama_pembimbing);														
+					if ($result != 0)
+					{
+						redirect('/welcome/index', 'refresh');
+					}
 				}
 				else
 				{
-					echo $result;
+					$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+					$this->load->view('error',$isi);
 				}
 			}
 			else
@@ -67,8 +87,70 @@ class contestant extends CI_Controller{
 		}
 		else
 		{
-			$isi['isi']='jpc_edit_data';
-			$this->load->view('template',$isi);
+			if (ISSET($_SESSION['contestant_id']))
+			{
+				$this->load->model('contestantmodel','co');
+				$isi['isi']='jpc_edit_data';
+				$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
+				$this->load->view('template',$isi);
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+				$this->load->view('error',$isi);
+			}
+		}
+	}
+	
+	public function edit_data_spc(){
+	
+		session_start();
+		if ((ISSET($_POST['nama_tim']))&&(ISSET($_POST['nama_universitas']))&&(ISSET($_POST['alamat_universitas']))&&
+			(ISSET($_POST['nama_anggota_satu']))&&(ISSET($_POST['ponsel_anggota_satu']))&&(ISSET($_POST['email_anggota_satu'])))
+		{
+			$nama_anggota_2 = (ISSET($_POST['nama_anggota_dua'])) ? $_POST['nama_anggota_dua'] : "";
+			$nama_anggota_3 = (ISSET($_POST['nama_anggota_tiga'])) ? $_POST['nama_anggota_tiga'] : "";
+			$nama_pembimbing = (ISSET($_POST['nama_pembimbing'])) ? $_POST['nama_pembimbing'] : "";
+			
+			if (ISSET($_SESSION['contestant_id']))
+			{
+				if ($_SESSION['contestant_type']==2)
+				{
+					$this->load->model('contestantmodel','co');
+					$result = $this->co->add_user_university($_SESSION['contestant_id'],$_POST['nama_tim'], $_POST['nama_universitas'], $_POST['alamat_universitas'], $_POST['nama_anggota_satu'], 
+																$_POST['ponsel_anggota_satu'], $_POST['email_anggota_satu'], $nama_anggota_2, $nama_anggota_3, $nama_pembimbing);
+																
+					if ($result != 0)
+					{
+						redirect('/welcome/index', 'refresh');
+					}
+				}
+				else
+				{
+					$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+					$this->load->view('error',$isi);
+				}
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+				$this->load->view('error',$isi);
+			}
+		}
+		else
+		{
+			if (ISSET($_SESSION['contestant_id']))
+			{
+				$this->load->model('contestantmodel','co');
+				$isi['isi']='spc_edit_data';
+				$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
+				$this->load->view('template',$isi);
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+				$this->load->view('error',$isi);
+			}
 		}
 	}
 	
@@ -82,49 +164,108 @@ class contestant extends CI_Controller{
 		$this->load->view('template',$isi);
 	}
 	
-	public function upload_kartu_pelajar(){
+	public function upload_kartu_pelajar_SMA(){
 	
 		session_start();
 		
-		$config['upload_path'] = './uploads/KTM/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['file_name'] = 'KTM'.$_SESSION['contestant_id'];
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload())
+		if (ISSET($_SESSION['contestant_id']))
 		{
-			//$error = array('error' => $this->upload->display_errors());
-			//echo $error['error'];
-			echo "fail";
+			$this->load->model('contestantmodel','co');
+			$this->co->upload($_SESSION['contestant_id'],1,0);
+			
+			$config['upload_path'] = './uploads/Kartu Pelajar/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['file_name'] = 'KP'.$_SESSION['contestant_id'];
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload())
+			{
+				//$error = array('error' => $this->upload->display_errors());
+				//echo $error['error'];
+				echo "fail";
+			}
+			else
+			{
+				echo "success";
+			}
 		}
 		else
 		{
-			echo "success";
+			echo "fail";
+		}
+	}
+	
+	public function upload_kartu_pelajar_universitas(){
+	
+		session_start();
+		
+		if (ISSET($_SESSION['contestant_id']))
+		{
+			if (ISSET($_GET['flag']))
+			{
+				$this->load->model('contestantmodel','co');
+				$this->co->upload($_SESSION['contestant_id'],1,$_GET['flag']);
+				
+				$config['upload_path'] = './uploads/KTM/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['file_name'] = 'KTM'.$_SESSION['contestant_id'].'_'.$_GET['flag'];
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload())
+				{
+					//$error = array('error' => $this->upload->display_errors());
+					//echo $error['error'];
+					echo "fail";
+				}
+				else
+				{
+					echo "success";
+				}
+			}
+			else
+			{
+				echo "fail";
+			}
+		}
+		else
+		{
+			echo "fail";
 		}
 	}
 	
 	public function upload_bukti_pembayaran(){
 	
 		session_start();
-		
-		$config['upload_path'] = './uploads/bukti/';
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['file_name'] = 'Bukti'.$_SESSION['contestant_id'];
-		$config['max_width']  = '1024';
-		$config['max_height']  = '768';
-
-		$this->load->library('upload', $config);
-
-		if ( ! $this->upload->do_upload())
+		if (ISSET($_SESSION['contestant_id']))
 		{
-			echo "fail";
+			$this->load->model('contestantmodel','co');
+			$this->co->upload($_SESSION['contestant_id'],2,0);
+			$config['upload_path'] = './uploads/bukti/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['file_name'] = 'Bukti'.$_SESSION['contestant_id'];
+			$config['max_width']  = '1024';
+			$config['max_height']  = '768';
+
+			$this->load->library('upload', $config);
+
+			if ( ! $this->upload->do_upload())
+			{
+				echo "fail";
+			}
+			else
+			{
+				echo "success";
+			}
 		}
 		else
 		{
-			echo "success";
+			echo "fail";
 		}
 	}
 	

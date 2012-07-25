@@ -1,6 +1,6 @@
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	
-	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=1"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	
 		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
 
@@ -8,7 +8,7 @@
 
 	</form>
 	
-	<form id="form2" action="<?php echo base_url("contestant/upload_kartu_pelajar"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form id="form2" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=2"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	
 		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
 
@@ -16,7 +16,7 @@
 
 	</form>
 	
-	<form id="form3" action="<?php echo base_url("contestant/upload_kartu_pelajar"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form id="form3" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=3"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	
 		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
 

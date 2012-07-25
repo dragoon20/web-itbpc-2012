@@ -24,12 +24,41 @@
 		
 		function get_data_junior($id)
 		{
-			$query = $this->db->query("SELECT contestant_id,contestant_type FROM contestant WHERE contestant_username = '".$username."' AND contestant_password = '".$password."'");
+			$query = $this->db->query("SELECT contestant_name,contestant_phone, contestant_address, contestant_email, contestant_class,
+										contestant_school_name, contestant_school_address, contestant_supervisor FROM contestant_high_school 
+										WHERE contestant_id = '".$id."'");
 			$result = array();
 			foreach ($query->result() as $row)
 			{
-				$result['id'] = $row->contestant_id;
-				$result['type'] = $row->contestant_type;
+				$result['name'] = $row->contestant_name;
+				$result['phone'] = $row->contestant_phone;
+				$result['address'] = $row->contestant_address;
+				$result['email'] = $row->contestant_email;
+				$result['class'] = $row->contestant_class;
+				$result['school_name'] = $row->contestant_school_name;
+				$result['school_address'] = $row->contestant_school_address;
+				$result['supervisor'] = $row->contestant_supervisor;
+			}
+			return $result;
+		}
+		
+		function get_data_senior($id)
+		{
+			$query = $this->db->query("SELECT contestant_team_name,contestant_university_name, contestant_university_address, contestant_leader_name, 
+										contestant_leader_phone, contestant_leader_email, contestant_second_name, contestant_third_name, 
+										contestant_supervisor_name FROM contestant_university WHERE contestant_id = '".$id."'");
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$result['team_name'] = $row->contestant_team_name;
+				$result['university_name'] = $row->contestant_university_name;
+				$result['university_address'] = $row->contestant_university_address;
+				$result['leader_name'] = $row->contestant_leader_name;
+				$result['leader_phone'] = $row->contestant_leader_phone;
+				$result['leader_email'] = $row->contestant_leader_email;
+				$result['second_name'] = $row->contestant_second_name;
+				$result['third_name'] = $row->contestant_third_name;
+				$result['supervisor_name'] = $row->contestant_supervisor_name;
 			}
 			return $result;
 		}
@@ -179,42 +208,12 @@
 		}
 		
 		function update_user_high_school($id, $nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
-		{
-			foreach ($query->result() as $row)
-			{
-				$id = $row->contestant_id;
-			}
-			
-			$this->db->query("INSERT INTO contestant_high_school(contestant_id,contestant_name,contestant_phone,contestant_address,contestant_email,".
-							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
-							"('".$id."','".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
-			
-			
-			//email
-			include("Mail.php");
-			
-			/* mail setup recipients, subject etc */
-			$to = $email;
-			$subject = "Pendaftaran JPC";
-			$body = "Kepada ".$nama.",\n\nAnda telah berhasil mendaftar sebagai peserta ITB Junior Programming Contest 2012.\nBerikut data username dan password Anda:\n\n".
-					"username: ".$username."\npassword: ".$password."\n\nSelamat bertanding dalam ITB Junior Programming Contest 2012.";
-			
-			$headers = array ('From' => $this->from,
-			   'To' => $to,
-			   'Subject' => $subject);
-
-			$smtp = Mail::factory('smtp', array('host' => $this->host,
-                                        'port' => $this->port,
-                                        'auth' => true,
-                                        'username' => $this->username_mail,
-                                        'password' => $this->password_mail));
-			$mail = $smtp->send($to, $headers, $body);
+		{			
+			$result = $this->db->query("UPDATE contestant_high_school SET contestant_name='".$nama."',contestant_phone='".$ponsel."',contestant_address='".$alamat."',
+							contestant_email='".$email."',contestant_class='".$kelas."',contestant_school_name='".$nama_sekolah."',
+							contestant_school_address=".$alamat_sekolah."',contestant_supervisor='".$pembimbing."' WHERE contestant_id = '".$id."'");
 			 
-			if (PEAR::isError($mail)) {
-			   echo $mail->getMessage();
-			} else {
-			   return $result;
-			}
+		    return $result;
 		}
 		
 		function add_user_university($nama_tim, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
@@ -266,6 +265,49 @@
 			} else {
 			   return $result;
 			}
+		}
+		
+		function update_user_university($id, $nama_tim, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
+		{			
+			$result = $this->db->query("UPDATE contestant_university SET contestant_team_name='".$nama_tim."',contestant_university_name='".$nama_universitas."',
+							contestant_university_address='".$alamat_universitas."',contestant_leader_name='".$nama_anggota_satu."',
+							contestant_leader_phone='".$ponsel_anggota_satu."',contestant_leader_email='".$email_anggota_satu."',
+							contestant_second_name='".$nama_anggota_dua."',contestant_third_name='".$nama_anggota_tiga."',
+							contestant_supervisor_name='".$nama_pembimbing."' WHERE contestant_id = '".$id."'");
+			 
+		    return $result;
+		}
+		
+		function upload($id,$type,$flag)
+		{
+			$this->load->helper('url');
+			$link = "";
+			if ($flag==0)
+			{
+				if ($type==1)
+				{
+					$link = base_url("uploads/Kartu Pelajar/KP".$id);
+				}
+				else if ($type==2)
+				{
+					$link = base_url("uploads/bukti/Bukti".$id);
+				}
+			}
+			else
+			{
+				if ($type==1)
+				{
+					$link = base_url("uploads/KTM/KTM".$id."_".$flag);
+				}
+				else if ($type==2)
+				{
+					$link = base_url("uploads/bukti/Bukti".$id);
+				}
+			}
+			}
+			$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
+			
+			return $result;
 		}
 	}
 
