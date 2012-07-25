@@ -71,19 +71,19 @@ Released   : 20120203
 					if (isset($_SESSION['contestant_id']))
 					{
 						?>
-						<a href="echo base_url("contestant/logout");" style="color:#fff;display:block;width:70px;float:right; margin-right:20px;"> LOGOUT </a>
+						<a href="<?php echo base_url("contestant/logout");?>" style="color:#fff;display:block;width:70px;float:right; margin-right:20px;"> LOGOUT </a>
 						<?php
 
 						if ($_SESSION['contestant_type'] == '1')
 						{
 							?>
-							<a href="echo base_url("contestant/halaman_jpc");" style="color:#fff;display:block;width:120px;"> EDIT DATA </a>
+							<a href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;"> EDIT DATA </a>
 							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '2')
 						{
 							?>
-							<a href="echo base_url("contestant/halaman_sma");" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a href="<?php echo base_url("contestant/halaman_sma");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
 					}
