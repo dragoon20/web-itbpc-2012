@@ -178,6 +178,7 @@ class contestant extends CI_Controller{
 			{
 				$isi['error']=$error;
 				$isi['isi']='spc_register';
+				$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
 				$this->load->view('template',$isi);
 			}
 			else
