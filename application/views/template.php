@@ -67,22 +67,23 @@ Released   : 20120203
 		</div>
 		<div id="menu">
 			<ul>
-				<li><?php echo anchor("welcome/index","Home");?></li>
-				<li><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
+				<li id="home_navigation" class="current_menu"><?php echo anchor("welcome/index","Home");?></li>
+				<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
 					<ul>
 						<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
-						<li><?php echo anchor("seniorpc/spc_peraturan","Peraturan & Regulasi");?></li>
+						<li><?php echo anchor("seniorpc/spc_peraturan","Peraturan &<br> Regulasi");?></li>
 						<li><?php echo anchor("seniorpc/spc_pendaftaran","Pendaftaran");?></li>
 					</ul>
 				</li>
-				<li><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
+				<li id="junior_navigation"><?php echo anchor("juniorpc/jpc_deskripsi","Junior PC");?>
 					<ul>
 						<li><?php echo anchor("juniorpc/jpc_deskripsi","Deskripsi");?></li>
-						<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan & Regulasi");?></li>
+						<li><?php echo anchor("juniorpc/jpc_peraturan","Peraturan &<br> Regulasi");?></li>
 						<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
 					</ul>
 				</li>
-				<li><?php echo anchor("faq/faq_content","FAQ");?></li>
+				<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
+				<li id="faq_navigation"><?php echo anchor("faq/faq_content","FAQ");?></li>
 			</ul>
 		</div>
 		<!-- end #menu -->
