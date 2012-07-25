@@ -137,5 +137,20 @@ Released   : 20120203
 				login_open = 0;
 			}
 		}
+		
+		function goToByScroll(id){
+					$('html,body').animate({
+						scrollTop: $(id).offset().top
+					},'slow');
+				};
+				
+		$("#linkToContact").live("click", function () {
+						goToByScroll("#contact");
+					});
+					
+					
+					$("#goToContact").live("click", function () {
+						goToByScroll("#contact");
+					});
 	</script>
 </html>
