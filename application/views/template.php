@@ -46,6 +46,7 @@ Released   : 20120203
 			<div id="menu">
 				<ul>
 					<li id="home_navigation" class="current_menu"><?php echo anchor("welcome/index","Home");?></li>
+					<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
 					<li id="senior_navigation"><?php echo anchor("seniorpc/spc_deskripsi","Senior PC");?>
 						<ul class="sub_menu">
 							<li><?php echo anchor("seniorpc/spc_deskripsi","Deskripsi");?></li>
@@ -60,7 +61,7 @@ Released   : 20120203
 							<li><?php echo anchor("juniorpc/jpc_pendaftaran","Pendaftaran");?></li>
 						</ul>
 					</li>
-					<li id="gallery_navigation"> <?php echo anchor("gallery/gallery_content","GALLERY");?> </li>
+					
 					<li id="faq_navigation"><?php echo anchor("faq/faq_content","FAQ");?></li>
 				</ul>
 			</div>

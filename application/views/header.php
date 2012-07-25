@@ -118,90 +118,59 @@ function formatresults2(){
 
 <div id="cdcontainer"></div>
 
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><img src="<?php echo base_url("images/itbpc2012.png");?>" width="21%"></h1>
-			</div>
-			
-			<div id="hd_txt">
-				<!--<div id="hd_txt_1">COMING <span id="hd_txt_2">(NOT SO) </span>SOON!!</div>-->
-				<div id="hd_txt_2">
-					Pendaftaran ITBPC 2012
-				</div>
-				<div id="hd_txt_3">
-					dibuka hingga : <!--Daftar sekarang! <br />
-					<a href="#itbspc_pendaftaran">ITBSPC</a> | 
-					<a href="#itbjpc_pendaftaran">ITBJPC</a> |
-					<a href="#secpd_pendaftaran">Seminar</a><br />-->
-				</div>
-				<!--<div id="cdcontainer"></div>
-
-				<script type="text/javascript">
-				//cdLocalTime("ID_of_DIV_container", "server_mode", LocaltimeoffsetMinutes, "target_date", "opt_debug_mode")
-				//cdLocalTime.displaycountdown("base_unit", formatfunction_reference)
-
-				//Note: "launchdate" should be an arbitrary but unique variable for each instance of a countdown on your page:
-
-				var launchdate=new cdLocalTime("cdcontainer", "server-php", 0, "September 10, 2012 23:59:59", "opt_debug_mode")
-				launchdate.displaycountdown("days", formatresults2)
-				</script>-->
-					
-				<div>
-					<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fitbpc&amp;
-						send=false&amp;
-						layout=button_count&amp;
-						width=450&amp;
-						show_faces=true&amp;
-						action=like&amp;
-						colorscheme=light&amp;
-						font&amp;
-						height=21" 
-						scrolling="no" 
-						frameborder="0" 
-						style="border:none;
-						overflow:hidden; 
-						margin-left: 450px;
-						margin-top: 30px;
-						width:450px; 
-						height:21px;" 
-						allowTransparency="true">
-					</iframe>				
-					
-				</div>
-				<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
-			</div>
-		</div>
-		
-		<div style="margin-right:15%; margin-top:-170px;" class="right">
+	<div id="header">
+		<div style="width:280px;margin-top:20px;" class="left">
+			<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 			<script>
-			new TWTR.Widget({
-			  version: 2, 
-			  type: 'profile',
-			  rpp: 2,
-			  interval: 30000,
-			  width: 260,
-			  height: 120,
-			  theme: {
-			    shell: {
-			      background: '#007bc2',
-			      color: '#ffffff'
-			    },
-			    tweets: {
-			      background: '#ffffff',
-			      color: '#696469',
-			      links: '#ec7526'
-			    }
-			  },
-			  features: {
-			    scrollbar: true,
-			    loop: false,
-			    live: false,
-			    behavior: 'all'
-			  }
-			}).render().setUser('itbpc').start();
+				new TWTR.Widget({
+				  version: 2, 
+				  type: 'profile',
+				  rpp: 10,
+				  interval: 30000,
+				  width: 245,
+				  height: 120,
+				  theme: {
+				    shell: {
+				      background: '#007bc2',
+				      color: '#ffffff'
+				    },
+				    tweets: {
+				      background: '#ffffff',
+				      color: '#696469',
+				      links: '#ec7526'
+				    }
+				  },
+				  features: {
+				    scrollbar: true,
+				    loop: false,
+				    live: false,
+				    behavior: 'all'
+				  }
+				}).render().setUser('itbpc').start();
 			</script>
 		</div>
+		<div style="width:220px;height:210px; margin-top:20px; margin-left:85px;" class="left">
+			<img src="<?php echo base_url("images/itbpc2012.png");?>" width="100%">
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=192855437509108";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			</script>
+			<div style="margin-top:10px; margin-left:72px; width:100px;" class="fb-like" data-href="http://www.facebook.com/itbpc" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
+		</div>
+		<div style="width:300px;height:140px; margin-top:90px; margin-left:10px;" class="right"> 
+			<span style="font-size:18px;color:#666;">
+			Pendaftaran ITBPC 2012 <br>
+			dibuka hingga : 
+			<span>
+			
+		</div>
 	</div>
+			
+	
 
 	<!-- end #header -->
