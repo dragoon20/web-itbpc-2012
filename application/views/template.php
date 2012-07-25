@@ -76,7 +76,7 @@ Released   : 20120203
 						if ($_SESSION['contestant_type'] == '1')
 						{
 							?>
-							<a href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;"> EDIT DATA </a>
+							<a href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '2')
