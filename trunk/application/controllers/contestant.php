@@ -523,7 +523,7 @@ class contestant extends CI_Controller{
 						array_push($error,"Email harus diisi.");
 					else
 					{
-						if (!((strpos('@',$_POST['email']))&&(strpos('.',$_POST['email']))))
+						if (!((strpos($_POST['email'],'@'))&&(strpos($_POST['email'],'.'))))
 						{
 							array_push($error,"Email harus diisi dengan format yang benar.");
 						}
