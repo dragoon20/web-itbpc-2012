@@ -211,7 +211,7 @@
 		{			
 			$result = $this->db->query("UPDATE contestant_high_school SET contestant_name='".$nama."',contestant_phone='".$ponsel."',contestant_address='".$alamat."',
 							contestant_email='".$email."',contestant_class='".$kelas."',contestant_school_name='".$nama_sekolah."',
-							contestant_school_address=".$alamat_sekolah."',contestant_supervisor='".$pembimbing."' WHERE contestant_id = '".$id."'");
+							contestant_school_address='".$alamat_sekolah."',contestant_supervisor='".$pembimbing."' WHERE contestant_id = '".$id."'");
 			 
 		    return $result;
 		}

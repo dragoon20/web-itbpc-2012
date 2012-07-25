@@ -395,6 +395,8 @@ class contestant extends CI_Controller{
 	
 	public function register_jpc(){
 	
+		$error = array();
+	
 		require_once($_SERVER['DOCUMENT_ROOT'].'/itbpc2012/application/libraries/recaptchalib.php');
 		
 		$privatekey = "6LcNUdQSAAAAAPZc3bFtC6huj-nfs1lGvJSBuRs1";
@@ -408,25 +410,52 @@ class contestant extends CI_Controller{
 
 			if (!$resp->is_valid) {
 				// What happens when the CAPTCHA was entered incorrectly
-				die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
-						"(reCAPTCHA said: " . $resp->error . ")");
+				array_push($error,"CAPTCHA yang dimasukkan tidak benar.");
+				$isi['error']=$error;
+				$isi['isi']='jpc_register';
+				$this->load->view('template',$isi);
 			} else {
 				// Your code here to handle a successful verification
 				if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&(ISSET($_POST['alamat']))&&
 					(ISSET($_POST['email']))&&(ISSET($_POST['kelas']))&&(ISSET($_POST['nama_sekolah']))&&
 					(ISSET($_POST['alamat_sekolah']))&&(ISSET($_POST['nama_pembimbing'])))
 				{
-					$this->load->model('contestantmodel','co');
-					$result = $this->co->add_user_high_school($_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], $_POST['email'], 
-																$_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $_POST['nama_pembimbing']);
-																
-					if ($result != 0)
-					{
-						redirect('/welcome/index', 'refresh');
-					}
+					if (($_POST['nama_lengkap']=="")||($_POST['nama_lengkap']==null))
+						array_push($error,"Nama harus diisi");
+					if (($_POST['email']=="")||($_POST['email']==null))
+						array_push($error,"Email harus diisi");
 					else
 					{
-						echo $result;
+						if (!((strpos('@',$_POST['email']))&&(strpos('.',$_POST['email']))))
+						{
+							array_push($error,"Email harus diisi dengan format yang benar");
+						}
+					}
+					if (($_POST['kelas']=="")||($_POST['kelas']==null))
+						array_push($error,"Kelas harus diisi");
+					if (($_POST['nama_sekolah']=="")||($_POST['nama_sekolah']==null))
+						array_push($error,"Nama Sekolah harus diisi");
+						
+					if (!empty($error))
+					{
+						$isi['error']=$error;
+						$isi['isi']='jpc_register';
+						$this->load->view('template',$isi);
+					}
+					else
+					{			
+						$this->load->model('contestantmodel','co');
+						$result = $this->co->add_user_high_school($_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], $_POST['email'], 
+																	$_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $_POST['nama_pembimbing']);
+																	
+						if ($result != 0)
+						{
+							redirect('/welcome/index', 'refresh');
+						}
+						else
+						{
+							echo $result;
+						}
 					}
 				}
 				else
