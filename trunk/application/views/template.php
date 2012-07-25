@@ -36,6 +36,7 @@ Released   : 20120203
 				</br>
 				<input type="submit" value="Login" id="login_button"/>
 			</form>
+			<a style="text-decoration:none; margin-left:20px; color:white;" href="<?php echo base_url("contestant/forgot_password");?>">Lupa Password</a>
 		</div>		
 		
 		<img src="<?php echo base_url("images/ajax-loader.gif");?>" id="loader"> 

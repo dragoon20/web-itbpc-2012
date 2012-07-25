@@ -344,7 +344,51 @@ class contestant extends CI_Controller{
 	}
 	
 	public function change_password(){
-		
+		if (ISSET($_SESSION['contestant_id']))
+		{
+			$error = array();
+			if ((ISSET($_POST['password_lama']))&&(ISSET($_POST['password_baru'])))
+			{
+				$this->load->model('contestantmodel','co');
+				if (($_POST['password_baru'])!=($_POST['konfirmasi_password_baru']))
+					array_push($error,"Password yang dimasukkan tidak sama.");
+				$result = $this->co->check_password($_SESSION['contestant_id'],$_POST['password_lama']);
+				if ($result==0)
+					array_push($error,"Password lama yang dimasukkan salah.");
+				if (!empty($error))
+				{
+					$isi['error']=$error;
+					$isi['isi']='change_password';
+					$this->load->view('template',$isi);
+				}
+				else
+				{
+					$result = $this->co->change_password($_POST['id'],$_POST['password_baru']);
+					
+					if ($result != null)
+					{
+						redirect('/contestant/login', 'refresh');
+					}
+					else
+					{
+						$isi['message']='Maaf, password anda tidak dapat diganti. Silahkan hubungi panitia.';
+						$isi['isi']='error';
+						$this->load->view('template',$isi);
+					}
+				}
+			}
+			else
+			{
+				$isi['isi']='change_password';
+				$this->load->view('template',$isi);
+			}
+		}
+		else
+		{
+			$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+			$isi['isi']='error';
+			$this->load->view('template',$isi);
+		}
 	}
 	
 	public function forgot_password(){
@@ -358,8 +402,9 @@ class contestant extends CI_Controller{
 				$result = $this->co->send_reset_code($_POST['email']);
 				if ($result>0)
 				{
+					$isi['isi']='pesan';
 					$isi['message']='Sebuah pesan telah dikirim ke alamat email anda untuk prosedur reset password.';
-					$this->load->view('pesan',$isi);
+					$this->load->view('template',$isi);
 				}
 			}
 			else
@@ -385,8 +430,9 @@ class contestant extends CI_Controller{
 			
 			if ($result != null)
 			{
-				$isi['message']='Password anda telah berhasil direset.';
-				$this->load->view('pesan',$isi);
+				$isi['id']=$result;
+				$isi['isi']='reset_password';
+				$this->load->view('template',$isi);
 			}
 			else
 			{
@@ -405,20 +451,33 @@ class contestant extends CI_Controller{
 	
 	public function reseted_password()
 	{
+		$error = array();
 		if ((ISSET($_POST['id']))&&(ISSET($_POST['password_baru'])))
 		{
-			$this->load->model('contestantmodel','co');
-			$result = $this->co->change_password($_POST['id'],$_POST['password_baru']);
-			
-			if ($result != null)
+			if (($_POST['password_baru'])!=($_POST['konfirmasi_password_baru']))
+				array_push($error,"Password yang dimasukkan tidak sama.");
+			if (!empty($error))
 			{
-				redirect('/contestant/login', 'refresh');
+				$isi['error']=$error;
+				$isi['isi']='reset_password';
+				$isi['id']=$_POST['id'];
+				$this->load->view('template',$isi);
 			}
 			else
 			{
-				$isi['message']='Maaf, password anda tidak dapat diganti. Silahkan hubungi panitia.';
-				$isi['isi']='error';
-				$this->load->view('template',$isi);
+				$this->load->model('contestantmodel','co');
+				$result = $this->co->change_password($_POST['id'],$_POST['password_baru']);
+				
+				if ($result != null)
+				{
+					redirect('/welcome/index', 'refresh');
+				}
+				else
+				{
+					$isi['message']='Maaf, password anda tidak dapat diganti. Silahkan hubungi panitia.';
+					$isi['isi']='error';
+					$this->load->view('template',$isi);
+				}
 			}
 		}
 		else
