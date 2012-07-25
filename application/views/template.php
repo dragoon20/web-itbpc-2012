@@ -11,12 +11,12 @@ Released   : 20120203
 
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="ITBPC 2012 adalah kontes pemrograman dan seminar tahunan yang diselenggarakan oleh Program Studi Teknik Informatika ITB.">
-	<meta name="keywords" content="ITBPC, ITBPC 2012, ITBPC 2011, ITBPC 2010, ITB Programming Contest 2010, ITB Programming Contest 2011, ITB Programming Contest 2012">
+	<head>
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="ITBPC 2012 adalah kontes pemrograman dan seminar tahunan yang diselenggarakan oleh Program Studi Teknik Informatika ITB.">
+		<meta name="keywords" content="ITBPC, ITBPC 2012, ITBPC 2011, ITBPC 2010, ITB Programming Contest 2010, ITB Programming Contest 2011, ITB Programming Contest 2012">
 		<?php
 			$this->load->helper('HTML');
 			$this->load->helper('url');
@@ -47,7 +47,7 @@ Released   : 20120203
 				<?php 
 					if (isset($_SESSION['contestant_id']))
 					{
-						echo anchor("contestant/upload_data","Edit Data");
+						if ($_SESSION['contestant_type'] == '1')
 						{
 							echo anchor("contestant/upload_data_sma","Edit Data");
 						}
