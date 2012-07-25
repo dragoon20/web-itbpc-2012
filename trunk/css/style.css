@@ -66,8 +66,7 @@ img.aligncenter {margin: 0px auto;}
 #menu ul li a:hover{ text-decoration: none; background-color:#168dc9; color: white; display: block;}
 #menu ul li ul {display: none;}
 #menu ul li:hover ul { display:block; position: absolute;top:60px; }
-#menu ul li ul li {width:158px;display:block; overflow:hidden;
-    white-space:nowrap; text-overflow:ellipsis;}
+#menu ul li ul li {width:158px;}
 #menu ul li:hover ul li a{background: #168dc9; text-decoration: none; color:#fff; display: block; height: auto; 
 	 line-height: 30px;font-size: 13px; border-top: 1px solid #fff; width:97px;}
 #menu ul li:hover ul li a:hover {background:#3fa4db;}
