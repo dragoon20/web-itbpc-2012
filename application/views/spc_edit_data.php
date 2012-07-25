@@ -16,7 +16,6 @@
 		<input type="text" class="register" name="alamat_universitas" placeholder="Alamat Perguruan Tinggi" value="<?php echo $data['university_address'];?>"> <br>
 		<input type="text" class="register" name="nama_anggota_satu" placeholder="Nama Lengkap Anggota Tim #1 (Ketua)" value="<?php echo $data['leader_name'];?>"> <br>
 		<input type="text" class="register" name="ponsel_anggota_satu" placeholder="Nomor Ponsel Anggota Tim #1" value="<?php echo $data['leader_phone'];?>"> <br>
-		<input type="text" class="register" name="email_anggota_satu" placeholder="Email Anggota Tim #1" value="<?php echo $data['leader_email'];?>"> <br>
 		<input type="text" class="register" id="anggota_4" name="nama_pembimbing" placeholder="Nama Lengkap Dosen Pembimbing" value="<?php echo $data['supervisor_name'];?>"> <br>
 
 		<a href="javascript:tambah(2);" id="add_anggota_1" class="add_anggota_button"> TAMBAH ANGGOTA 2 </a> 
@@ -26,7 +25,7 @@
 		
 		<input type="text" class="register" id="anggota_3" name="nama_anggota_tiga" placeholder="Nama Lengkap Anggota Tim #3" value="<?php echo $data['third_name'];?>"> <br>		
 		
-		<input type="submit" class="register_button" value="Ubah" style="float:right;"/>
+		<input type="submit" class="link_blue" value="Ubah" style="float:right;"/>
 	</form>
 </div>
 <script type="text/javascript">
