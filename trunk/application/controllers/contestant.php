@@ -368,7 +368,7 @@ class contestant extends CI_Controller{
 					
 					if ($result != null)
 					{
-						redirect('/contestant/login', 'refresh');
+						redirect('/welcome/index', 'refresh');
 					}
 					else
 					{
