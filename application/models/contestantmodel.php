@@ -97,6 +97,12 @@
 			return $result;
 		}
 		
+		function check_password($id,$password)
+		{
+			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_id = '".$id."', contestant_password = '".hash($password)."'");
+			return $query->num_rows();
+		}
+		
 		function send_reset_code($email)
 		{
 			$id = null;
