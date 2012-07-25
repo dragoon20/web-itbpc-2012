@@ -12,7 +12,6 @@
 	<br>
 	<a class="link_blue" href="javascript:submit()">Upload</a>
 	<br><br>
-
 </div>
 <script type="text/javascript">
 
