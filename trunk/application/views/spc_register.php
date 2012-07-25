@@ -1,4 +1,4 @@
-	<b><i><h2 style="margin :0px">Form Pendaftaran ITB Senior Programming Contest</h2></i></b>
+	<b><h2 style="margin :0px">Form Pendaftaran ITB Senior Programming Contest</h2></b>
 	</br></br></br>
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	
@@ -45,4 +45,10 @@
 		i--;
 		$('#add_anggota_'+i).hide();
 	}
+
+	$('#home_navigation').removeClass('current_menu');
+	$('#senior_navigation').addClass('current_menu');
+	$('#junior_navigation').removeClass('current_menu');
+	$('#gallery_navigation').removeClass('current_menu');
+	$('#faq_navigation').removeClass('current_menu');
 </script>

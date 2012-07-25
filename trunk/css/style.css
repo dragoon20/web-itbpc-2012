@@ -57,56 +57,20 @@ img.aligncenter {margin: 0px auto;}
 --------------------------------------------------------------------------- */
 #menu-wrapper { overflow: hidden; height: 60px; background: #007cc2; position: fixed; z-index:1; width:100%; }
 #menu { width: 960px; position: relative; margin-left: auto; margin-right:auto; z-index:1; }
-#menu ul{ margin: 0; padding: 0; list-style: none; line-height: normal; }
-#menu ul li{ position: relative; float: left;margin-right: 1px; display: block; }
+#menu ul{ margin:0; padding: 0; list-style: none; line-height: normal;}
+#menu ul li{ position: relative; float: left; display: block; }
 #menu ul li a{ display: block; float: left; height: 60px; margin: 0px;
 	padding: 0px 30px 0px 30px; line-height: 60px; letter-spacing: 1px; text-decoration: none; text-transform: uppercase;
-	font-size: 17px; font-weight: normal; color: #fff; border: none; white-space: nowrap; }
-#menu ul li a:hover{ 
-	text-decoration: none;
-	background-image: linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(255,102,0) 20%, rgb(255,179,0) 100%);
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.2, rgb(255,102,0)),
-		color-stop(1, rgb(255,179,0))
-	);
-	color: white;
-    display: block;
-}
-#menu ul li ul { display: none;}
-#menu ul li:hover ul { 
-	display: block;
-    position: absolute;
-    top: 60px;
-}
-#menu ul li:hover ul li a{ 
-	background: #FFA800;
-	text-decoration: none;
-	color: #FFFFFF;
-	display: block;
-	height: 30px;
-	line-height: 30px;
-	font-size: 13px;
-	border-top: 1px solid black;
-	width: 170px;
-}
-#menu ul li:hover ul li a:hover { 
-	background: #848484;
-}
+	font-size: 17px; font-weight: normal; color: #fff; border: none; white-space: nowrap;}
 
-
-#menu .current_page_item a {
-	background: #FFA800;
-	color: #FFFFFF;
-}
-
-
+#menu ul li a:hover{ text-decoration: none; background-color:#168dc9; color: white; display: block;}
+#menu ul li ul {display: none;}
+#menu ul li:hover ul { display:block; position: absolute;top:60px; }
+#menu ul li:hover ul li a{  background: #168dc9; text-decoration: none; color:#fff; display: block; height: auto; 
+	line-height: 30px; font-size: 13px; border-top: 1px solid #fff; width:97px; }
+#menu ul li:hover ul li a:hover {background:#3fa4db;}
+#menu .current_page_item a {background:#168dc9;color:#FFFFFF;}
+.current_menu {background-color: #168dc9;}
 /* Page */
 
 #page {
@@ -248,10 +212,14 @@ box-shadow:         2px 3px 5px rgba(50, 50, 50, 0.17);
 letter-spacing:1px; font-size:17px;font-weight:bold;}
 .link_green:hover {background-color:#d6e15f; text-decoration:none;}
 
+
 .one-edge-shadow { -webkit-box-shadow: 0px 6px 5px rgba(50, 50, 50, 0.3);
 -moz-box-shadow:    0px 6px 5px rgba(50, 50, 50, 0.3);
 box-shadow:         0px 6px 5px rgba(50, 50, 50, 0.3); }
 
+.link_blue_nobutton {color:#007cc2;text-decoration:none;}
+.link_blue_nobutton:hover{color:#0092dd;}
+.sub_header {font-size:25px;color:#007cc2;}
 /* LOGIN FORM
 ----------------------------------------------------------------- */
 #login_box {width:300px; height:170px;display:block; background-color:#007bc2; z-index:3; position:absolute;

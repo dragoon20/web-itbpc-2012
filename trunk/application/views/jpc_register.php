@@ -1,4 +1,4 @@
-<b><i><h2 style="margin :0px">Form Pendaftaran ITB Junior Programming Contest</h2></i></b>
+<center> <b><h2 style="margin :0px">Form Pendaftaran ITB Junior Programming Contest</h2></b></center>
 	</br></br></br>
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	<form action="/itbpc2012/index.php/contestant/register_jpc" method="POST">
@@ -20,6 +20,13 @@
 		?>
 		<br />
 		<input type="submit" class="register_button" value="Daftar" style="float:right;"/>
-
 	</form>
 </div>
+
+<script> 
+	$('#home_navigation').removeClass('current_menu');
+	$('#senior_navigation').removeClass('current_menu');
+	$('#junior_navigation').addClass('current_menu');
+	$('#gallery_navigation').removeClass('current_menu');
+	$('#faq_navigation').removeClass('current_menu');
+</script>
