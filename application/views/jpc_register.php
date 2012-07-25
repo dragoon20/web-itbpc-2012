@@ -6,7 +6,7 @@
 		</br></br>
 		
 		<input type="text" class="register" name="nama_lengkap" placeholder="Nama lengkap"/> <br />
-		<input type="text" class="register" name="nomor_ponsel" placeholder="Password"/> <br />
+		<input type="text" class="register" name="nomor_ponsel" placeholder="Nomor handphone"/> <br />
 		<input type="text" class="register" name="alamat" placeholder="Alamat"/> <br />
 		<input type="text" class="register" name="email" placeholder="Email"/> <br />
 		<input type="text" class="register" name="kelas" placeholder="Kelas dan jurusan"/> <br />
