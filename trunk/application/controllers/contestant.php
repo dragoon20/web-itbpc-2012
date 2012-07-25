@@ -364,7 +364,7 @@ class contestant extends CI_Controller{
 				}
 				else
 				{
-					$result = $this->co->change_password($_POST['id'],$_POST['password_baru']);
+					$result = $this->co->change_password($_SESSION['contestant_id'],$_POST['password_baru']);
 					
 					if ($result != null)
 					{
