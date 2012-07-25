@@ -3,10 +3,10 @@
 <b>Apa itu <b style="color:#007cc2;">ITB PROGRAMMING CONTEST 2012</b>?</b>
 <ul>
 	<li>
-		<b style="color:#007cc2;">ITB PROGRAMMING CONTEST 2012</b></a> adalah <b>kontes pemrograman</b> yang diselenggarakan secara tahunan oleh <b>Program Studi Teknik Informatika STEI ITB</b>.</li>
+		<b style="color:#007cc2; text-align:justify;">ITB PROGRAMMING CONTEST 2012</b></a> adalah <b>kontes pemrograman</b> yang diselenggarakan secara tahunan oleh <b>Program Studi Teknik Informatika STEI ITB</b>.</li>
 	<li>
 		Kontes pemrograman terdiri dari dua kategori: <br>
-			<b><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> dan <b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b>.</li>
+			<b style="text-align:justify;"><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> dan <b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b>.</li>
 	<li>
 		Informasi lebih lanjut mengenai <b><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> dan <b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b> kunjungi submenu <b>peraturan dan regulasi</b> masing-masing kategori.</li>
 </ul> 
@@ -16,17 +16,17 @@
 <b>Siapa saja yang bisa mengikuti <b style="color:#007cc2;">ITB PROGRAMMING CONTEST 2012?</b>?</b>
 <ul>
 	<li>
-		<b><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> diikuti oleh <b>tim</b> yang terdiri dari <b>MAKSIMAL tiga orang mahasiswa S1</b> yang mewakili TEPAT satu perguruan tinggi yang terdaftar di Kementrian Pendidikan Nasional Indonesia terhitung dari 1 Oktober 2012.</li>
+		<b style="text-align:justify;"><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> diikuti oleh <b>tim</b> yang terdiri dari <b>MAKSIMAL tiga orang mahasiswa S1</b> yang mewakili TEPAT satu perguruan tinggi yang terdaftar di Kementrian Pendidikan Nasional Indonesia terhitung dari 1 Oktober 2012.</li>
 	<li>
-		<b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b> diikuti <b>perorangan</b> oleh <b>siswa/i pra-perguruan tinggi (SMA/MA/SMP/MTs/SMK/SD dan setaranya) </b> yang mewakili suatu sekolah yang terdaftar di Kementrian Pendidikan Nasional Indonesia terhitung dari 1 Oktober 2012.</li>
+		<b style="text-align:justify;"><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b> diikuti <b>perorangan</b> oleh <b>siswa/i pra-perguruan tinggi (SMA/MA/SMP/MTs/SMK/SD dan setaranya) </b> yang mewakili suatu sekolah yang terdaftar di Kementrian Pendidikan Nasional Indonesia terhitung dari 1 Oktober 2012.</li>
 </ul> 
 
 <hr /> 
 
-<b>Kapan <b style="color:#007cc2;">ITB PROGRAMMING CONTEST 2012</b> diselenggarakan?</b>
+<b>Kapan <b style="color:#007cc2;text-align:justify;"">ITB PROGRAMMING CONTEST 2012</b> diselenggarakan?</b>
 <ul>
 	<li>
-	Jadwal Pelaksanaan dapat dilihat pada halaman <b><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> dan <b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b>.  </li>
+	<b style="text-align:justify;">Jadwal Pelaksanaan dapat dilihat pada halaman <b><?php echo anchor("seniorpc/spc_deskripsi","ITB SENIOR PROGRAMMING CONTEST 2012");?></b> dan <b><?php echo anchor("juniorpc/jpc_deskripsi","ITB JUNIOR PROGRAMMING CONTEST 2012");?></b>.  </li>
 </ul> 
 
 <hr /> 
@@ -35,7 +35,7 @@
 <b>Bagaimana prosedur pendaftarannya?</b>
 <ul>
 	<li>
-		Pendaftaran kontes pemrograman dibuka sampai dengan tanggal (. . .).</li>
+		Pendaftaran kontes pemrograman dibuka sampai dengan Senin,10 September 2012 pukul 23.59 WIB.</li>
 	<!--<li>
 		Prosedur pendaftaran dapat dilihat pada bagian pendaftaran situs ITBPC 2012.</li>-->
 	<li>

@@ -1,5 +1,5 @@
 <?php 
-	$link_pdf='../../data/jpc_peraturan.pdf';
+	$link_pdf='../data/jpc_peraturan.pdf';
 ?>
 
 
