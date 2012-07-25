@@ -26,8 +26,8 @@ img.aligncenter {margin: 0px auto;}
 
 /*  HEADER
 --------------------------------------------------------------------------- */
-#header-wrapper { height: 240px; /*background: url(images/img01.jpg) no-repeat center top;*/}
-#header { width: 960px; height: 240px; margin: 0 auto;}
+#header-wrapper { height: 240px;}
+#header { width: 960px; height: 200px; margin:0 auto; padding-top:60px;}
 .header #hd_txt { padding-top:20px; text-align:center; color: #303030;text-shadow: 1px 1px 1px #b0b0b0; width:10px;}
 .header #hd_img_1 { width: 265px;margin-top : -15px; }
 .header #hd_txt_1{font-size:10pt;font-family:Tahoma, Arial, sans-serif; }
@@ -55,7 +55,7 @@ img.aligncenter {margin: 0px auto;}
 
 /* MENU
 --------------------------------------------------------------------------- */
-#menu-wrapper {height: 60px; background:#007cc2; position:fixed; z-index:1; width:100%;}
+#menu-wrapper {height: 60px; background:#007cc2; position:fixed; z-index:1000 !important; width:100%; }
 #menu { width: 960px; position: relative; margin-left: auto; margin-right:auto; z-index:1; }
 #menu ul{ margin:0; padding: 0; list-style: none; line-height: normal;}
 #menu ul li{ position: relative; float: left; display: block; }
