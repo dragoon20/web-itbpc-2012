@@ -39,18 +39,38 @@ class contestant extends CI_Controller{
 	
 	public function halaman_jpc()
 	{
-		$this->load->model('contestantmodel','co');
-		$isi['isi']='jpc_halaman';
-		$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
-		$this->load->view('template',$isi);
+		session_start();
+		
+		if ($_SESSION['contestant_type']==1)
+		{
+			$this->load->model('contestantmodel','co');
+			$isi['isi']='jpc_halaman';
+			$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
+			$this->load->view('template',$isi);
+		}
+		else
+		{
+			$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+			$this->load->view('error',$isi);
+		}
 	}
 	
 	public function halaman_spc()
 	{
-		$this->load->model('contestantmodel','co');
-		$isi['isi']='spc_halaman';
-		$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
-		$this->load->view('template',$isi);
+		session_start();
+		
+		if ($_SESSION['contestant_type']==2)
+		{
+			$this->load->model('contestantmodel','co');
+			$isi['isi']='spc_halaman';
+			$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
+			$this->load->view('template',$isi);
+		}
+		else
+		{
+			$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+			$this->load->view('error',$isi);
+		}
 	}
 	
 	public function edit_data_jpc(){
