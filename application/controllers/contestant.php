@@ -6,6 +6,7 @@ class contestant extends CI_Controller{
 	{
 		parent::__construct();		
 		$this->load->helper('url');
+		session_start();
 	}
 
 	public function login(){
@@ -17,7 +18,7 @@ class contestant extends CI_Controller{
 			if ($result != null)
 			{
 				// berhasil login yeah
-				session_start();
+				
 				$_SESSION['contestant_id'] = $result['id'];
 				$_SESSION['contestant_type'] = $result['type'];
 				$_SESSION['contestant_username'] = $_POST['username'];
@@ -27,7 +28,8 @@ class contestant extends CI_Controller{
 			{
 				// u know what this mean
 				$isi['message']='Maaf, username dan/atau password anda salah atau tidak terdaftar.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
@@ -39,43 +41,58 @@ class contestant extends CI_Controller{
 	
 	public function halaman_jpc()
 	{
-		session_start();
-		
-		if ($_SESSION['contestant_type']==1)
+		if (ISSET($_SESSION['contestant_id']))
 		{
-			$this->load->model('contestantmodel','co');
-			$isi['isi']='jpc_halaman';
-			$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
-			$this->load->view('template',$isi);
+			if ($_SESSION['contestant_type']==1)
+			{
+				$this->load->model('contestantmodel','co');
+				$isi['isi']='jpc_halaman';
+				$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
+				$this->load->view('template',$isi);
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
+			}
 		}
 		else
 		{
-			$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
-			$this->load->view('error',$isi);
+			$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+			$isi['isi']='error';
+			$this->load->view('template',$isi);
 		}
 	}
 	
 	public function halaman_spc()
 	{
-		session_start();
-		
-		if ($_SESSION['contestant_type']==2)
+		if (ISSET($_SESSION['contestant_id']))
 		{
-			$this->load->model('contestantmodel','co');
-			$isi['isi']='spc_halaman';
-			$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
-			$this->load->view('template',$isi);
+			if ($_SESSION['contestant_type']==2)
+			{
+				$this->load->model('contestantmodel','co');
+				$isi['isi']='spc_halaman';
+				$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
+				$this->load->view('template',$isi);
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
+			}
 		}
 		else
 		{
-			$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
-			$this->load->view('error',$isi);
+			$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+			$isi['isi']='error';
+			$this->load->view('template',$isi);
 		}
 	}
 	
 	public function edit_data_jpc(){
-		
-		session_start();
+	
 		if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&(ISSET($_POST['alamat']))&&
 			(ISSET($_POST['email']))&&(ISSET($_POST['kelas']))&&(ISSET($_POST['nama_sekolah']))&&
 			(ISSET($_POST['alamat_sekolah'])))
@@ -96,13 +113,15 @@ class contestant extends CI_Controller{
 				else
 				{
 					$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
-					$this->load->view('error',$isi);
+					$isi['isi']='error';
+					$this->load->view('template',$isi);
 				}
 			}
 			else
 			{
 				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
@@ -117,14 +136,14 @@ class contestant extends CI_Controller{
 			else
 			{
 				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 	}
 	
 	public function edit_data_spc(){
-	
-		session_start();
+
 		if ((ISSET($_POST['nama_tim']))&&(ISSET($_POST['nama_universitas']))&&(ISSET($_POST['alamat_universitas']))&&
 			(ISSET($_POST['nama_anggota_satu']))&&(ISSET($_POST['ponsel_anggota_satu']))&&(ISSET($_POST['email_anggota_satu'])))
 		{
@@ -148,13 +167,15 @@ class contestant extends CI_Controller{
 				else
 				{
 					$isi['message']='Maaf, Anda tidak bisa mengakses halaman ini.';
-					$this->load->view('error',$isi);
+					$isi['isi']='error';
+					$this->load->view('template',$isi);
 				}
 			}
 			else
 			{
 				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
@@ -169,7 +190,8 @@ class contestant extends CI_Controller{
 			else
 			{
 				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 	}
@@ -186,7 +208,7 @@ class contestant extends CI_Controller{
 	
 	public function upload_kartu_pelajar_SMA(){
 	
-		session_start();
+		
 		
 		if (ISSET($_SESSION['contestant_id']))
 		{
@@ -220,7 +242,7 @@ class contestant extends CI_Controller{
 	
 	public function upload_kartu_pelajar_universitas(){
 	
-		session_start();
+		
 		
 		if (ISSET($_SESSION['contestant_id']))
 		{
@@ -261,7 +283,7 @@ class contestant extends CI_Controller{
 	
 	public function upload_bukti_pembayaran(){
 	
-		session_start();
+		
 		if (ISSET($_SESSION['contestant_id']))
 		{
 			$this->load->model('contestantmodel','co');
@@ -307,7 +329,8 @@ class contestant extends CI_Controller{
 			else
 			{
 				$isi['message']='Maaf, email yang anda masukkan tidak terdaftar.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
@@ -332,13 +355,15 @@ class contestant extends CI_Controller{
 			else
 			{
 				$isi['message']='Maaf, link yang anda masukkan tidak terdaftar.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
 		{
 			$isi['message']='Maaf, link yang anda masukkan tidak terdaftar.';
-			$this->load->view('error',$isi);
+			$isi['isi']='error';
+			$this->load->view('template',$isi);
 		}
 	}
 	
@@ -356,13 +381,15 @@ class contestant extends CI_Controller{
 			else
 			{
 				$isi['message']='Maaf, password anda tidak dapat diganti. Silahkan hubungi panitia.';
-				$this->load->view('error',$isi);
+				$isi['isi']='error';
+				$this->load->view('template',$isi);
 			}
 		}
 		else
 		{
 			$isi['message']='Maaf, password anda tidak dapat diganti. Silahkan hubungi panitia.';
-			$this->load->view('error',$isi);
+			$isi['isi']='error';
+			$this->load->view('template',$isi);
 		}
 	}
 	
@@ -467,7 +494,7 @@ class contestant extends CI_Controller{
 	}
 	
 	public function logout(){
-		session_start();
+		
 		session_unset();
 		redirect('/welcome/index', 'refresh');
 	}

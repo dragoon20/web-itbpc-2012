@@ -19,6 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		session_start();
 		$isi['isi']='tengah';
 		$this->load->view('template',$isi);
 	}
