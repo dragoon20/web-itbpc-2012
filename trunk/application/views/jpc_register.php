@@ -3,6 +3,11 @@
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 
 	<div id="warning_box" style="color:red;width:330px;height:auto;">
+		<?php
+			foreach ($error as $temp)
+			{
+			}
+		?>
 	</div>
 	<br>
 	<form action="/itbpc2012/index.php/contestant/register_jpc" method="POST">
