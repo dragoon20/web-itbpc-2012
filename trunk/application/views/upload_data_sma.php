@@ -1,5 +1,5 @@
 <div style="width:400px; margin-left:auto; margin-right:auto;">
-	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar_sma"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<label class="left" style="width:35%;">Kartu Pelajar</label> <input class="left" type="file" name="userfile" size="60%"/>
 		<br/><br/>
 	</form>

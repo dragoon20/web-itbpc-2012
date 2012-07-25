@@ -343,6 +343,10 @@ class contestant extends CI_Controller{
 		}
 	}
 	
+	public function change_password(){
+		
+	}
+	
 	public function forgot_password(){
 		
 		if (ISSET($_POST['email']))
