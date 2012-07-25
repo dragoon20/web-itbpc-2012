@@ -1,8 +1,7 @@
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	<div id="warning_box" style="color:red;width:330px;height:auto;">
 	</div>
-	<form action="/itbpc2012/index.php/contestant/register_spc" method="POST">
-		<input type="text" class="register" name="nama_tim" placeholder="Nama Tim" value="<?php echo $data['team_name'];?>"> <br>
+	<form action="/itbpc2012/index.php/contestant/edit_data_spc" method="POST">
 		<input type="text" class="register" name="nama_universitas" placeholder="Nama Perguruan Tinggi" value="<?php echo $data['university_name'];?>"> <br>
 		<input type="text" class="register" name="alamat_universitas" placeholder="Alamat Perguruan Tinggi" value="<?php echo $data['university_address'];?>"> <br>
 		<input type="text" class="register" name="nama_anggota_satu" placeholder="Nama Lengkap Anggota Tim #1 (Ketua)" value="<?php echo $data['leader_name'];?>"> <br>
