@@ -1,39 +1,29 @@
-<div class="register_div" style="margin-left:auto;margin-right:auto;">
+<div style="width:400px; margin-left:auto; margin-right:auto;">
 	
 	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=1"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-	
-		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
-
-		<br /><br />
-
+		<label class="left" style="width:35%;">Kartu Pelajar</label>
+		<input type="file" name="userfile" size="60%" class="left"/>
+		<br/><br/>
 	</form>
 	
 	<form id="form2" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=2"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	
-		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
-
+		<label class="left" style="width:35%;">Kartu Pelajar</label><input type="file" name="userfile" size="60%" class="left"/>
 		<br /><br />
-
 	</form>
 	
 	<form id="form3" action="<?php echo base_url("contestant/upload_kartu_pelajar?flag=3"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-	
-		<label>Kartu Pelajar</label><input type="file" name="userfile" size="20" />
-
+		<label class="left" style="width:35%;">Kartu Pelajar</label><input type="file" name="userfile" size="60%" class="left" />
 		<br /><br />
-
 	</form>
 	
 	<form id="form4" action="<?php echo base_url("contestant/upload_bukti_pembayaran"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-	
-		<label>Bukti Pembayaran</label><input type="file" name="userfile" size="20" />
-
+		<label class="left" style="width:35%;">Bukti Pembayaran</label><input type="file" name="userfile" size="60%" class="left" />
 		<br /><br />
-
 	</form>
-
-	<a class="button" href="javascript:submit()">Upload</a>
-
+	<br>
+	<a class="link_blue" href="javascript:submit()">Upload</a>
+	<br><br>
 </div>
 <script type="text/javascript">
 

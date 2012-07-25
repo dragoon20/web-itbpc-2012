@@ -1,3 +1,10 @@
+<div id="warning_box" style="color:red;width:330px;height:auto;">
+	<?php
+		foreach ($error as $temp)
+		{
+		}
+	?>
+</div>
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	<form action="/itbpc2012/index.php/contestant/edit_data_jpc" method="POST">		
 		<input type="text" class="register" name="nama_lengkap" placeholder="Nama lengkap" value="<?php echo $data['name'];?>" /> <br />

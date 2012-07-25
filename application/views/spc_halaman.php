@@ -1,15 +1,31 @@
-<div class="register_div" style="margin-left:auto;margin-right:auto;">
-	
-	Nama Tim : <?php echo $data['team_name'];?> <br>
-	Universitas/Institut : <?php echo $data['university_name'];?> <br>
-	Alamat Universitas/Institut : <?php echo $data['university_address'];?> <br>
-	Nama Lengkap Anggota Tim #1 : <?php echo $data['leader_name'];?> <br>
-	Nomor Ponsel Anggota Tim #1 : <?php echo $data['leader_phone'];?> <br>
-	Email Anggota Tim #1 : <?php echo $data['leader_email'];?> <br>
-	Nama Lengkap Anggota Tim #2 : <?php echo $data['second_name'];?> <br>
-	Nama Lengkap Anggota Tim #3 : <?php echo $data['third_name'];?> <br>
-	Nama Lengkap Dosen Pembimbing : <?php echo $data['supervisor_name'];?> <br>
-	
-	<a href = "<?php echo base_url("contestant/edit_data_spc");?>">Edit Data</a>
-	<a href = "<?php echo base_url("contestant/upload_data_universitas");?>">Upload Data</a>
+<div style="width:700px; margin-left:auto; margin-right:auto; line-height: 40px;">
+	<div class="left" style="width:45%;font-weight:bold;"> 
+		Nama Tim <br>
+		Universitas/Institut <br>
+		Alamat Universitas/Institut <br>
+		Nama Lengkap Anggota Tim #1 <br>
+		Nomor Ponsel Anggota Tim #1 <br>
+		Email Anggota Tim #1 <br>
+		Nama Lengkap Anggota Tim #2 <br>
+		Nama Lengkap Anggota Tim #3 <br>
+		Nama Lengkap Dosen Pembimbing <br>
+	</div>
+	<div class="left" style="width:50%"> 
+		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['team_name'];?>
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['university_name'];?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['university_address'];?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['leader_name']?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['leader_phone']?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['leader_email']?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['second_name']?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['third_name']?> 
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor_name']?> 
+	</div>
+	<div style="clear:both">
+	</div>
+	<div style="margin-top:20px;">
+		<a class="link_blue" href = "<?php echo base_url("contestant/edit_data_spc");?>">Edit Data</a>
+		<a style="margin-left:20px;" class="link_blue" href = "<?php echo base_url("contestant/upload_data_universitas");?>">Upload Data</a>
+	</div>
+	<br>
 </div>
