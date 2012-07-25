@@ -99,7 +99,7 @@
 		
 		function check_password($id,$password)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_id = '".$id."', contestant_password = '".hash($password)."'");
+			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_id = '".$id."', contestant_password = '".md5($password)."'");
 			return $query->num_rows();
 		}
 		
