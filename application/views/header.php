@@ -118,12 +118,10 @@ function formatresults2(){
 
 <div id="cdcontainer"></div>
 
-
-
 	<div id="header-wrapper">
 		<div id="header">
 			<div id="logo">
-				<h1><img src="<?php echo base_url("images/itbpc2012.png"); ?>" width=21%></h1>
+				<h1><img src="<?php echo base_url("images/itbpc2012.png");?>" width="21%"></h1>
 			</div>
 			
 			<div id="hd_txt">
@@ -137,7 +135,6 @@ function formatresults2(){
 					<a href="#itbjpc_pendaftaran">ITBJPC</a> |
 					<a href="#secpd_pendaftaran">Seminar</a><br />-->
 				</div>
-
 				<!--<div id="cdcontainer"></div>
 
 				<script type="text/javascript">
@@ -172,9 +169,39 @@ function formatresults2(){
 					</iframe>				
 					
 				</div>
+				<script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
 			</div>
-		
 		</div>
-</div>
+		
+		<div style="margin-right:15%; margin-top:-170px;" class="right">
+			<script>
+			new TWTR.Widget({
+			  version: 2, 
+			  type: 'profile',
+			  rpp: 2,
+			  interval: 30000,
+			  width: 260,
+			  height: 120,
+			  theme: {
+			    shell: {
+			      background: '#007bc2',
+			      color: '#ffffff'
+			    },
+			    tweets: {
+			      background: '#ffffff',
+			      color: '#696469',
+			      links: '#ec7526'
+			    }
+			  },
+			  features: {
+			    scrollbar: true,
+			    loop: false,
+			    live: false,
+			    behavior: 'all'
+			  }
+			}).render().setUser('itbpc').start();
+			</script>
+		</div>
+	</div>
 
 	<!-- end #header -->
