@@ -1,6 +1,10 @@
 <center> <b><h2 style="margin :0px">Form Pendaftaran ITB Junior Programming Contest</h2></b></center>
 	</br></br></br>
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
+
+	<div id="warning_box" style="color:red;width:330px;height:auto;">
+	</div>
+	<br>
 	<form action="/itbpc2012/index.php/contestant/register_jpc" method="POST">
 		<i>&nbsp Silakan isi form berikut ini:</i>
 		</br></br>
