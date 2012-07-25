@@ -15,7 +15,7 @@
 		<input type="password" class="register" name="password_lama" placeholder="Password Lama"/> <br />
 		<input type="password" class="register" name="password_baru" placeholder="Password Baru"/> <br />
 		<input type="password" class="register" name="konfirmasi_password_baru" placeholder="Konfirmasi Password Baru"/> <br />
-		<input type="submit" class="register_button" value="Ubah" style="float:right;"/>
+		<input type="submit" class="link_blue" value="Ubah" style="float:right;"/>
 
 	</form>
 </div>

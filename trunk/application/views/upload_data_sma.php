@@ -85,7 +85,7 @@
 					
 					if (content2 == "success")
 					{
-						window.location = "<?php echo base_url("welcome/index"); ?>";
+						window.location = "<?php echo base_url("contestant/halaman_jpc"); ?>";
 					}
 					else
 					{
