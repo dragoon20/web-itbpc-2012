@@ -5,6 +5,6 @@
 
 		<br /><br />
 
-		<input type="submit" value="upload" />
+		<input type="submit" value="upload" class="link_blue"/>
 	</form>
 </div>
