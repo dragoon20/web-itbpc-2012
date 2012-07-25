@@ -213,10 +213,10 @@
 			}
 		}
 		
-		function update_user_high_school($id, $nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
+		function update_user_high_school($id, $nama, $ponsel, $alamat, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{			
 			$result = $this->db->query("UPDATE contestant_high_school SET contestant_name='".$nama."',contestant_phone='".$ponsel."',contestant_address='".$alamat."',
-							contestant_email='".$email."',contestant_class='".$kelas."',contestant_school_name='".$nama_sekolah."',
+							contestant_class='".$kelas."',contestant_school_name='".$nama_sekolah."',
 							contestant_school_address='".$alamat_sekolah."',contestant_supervisor='".$pembimbing."' WHERE contestant_id = '".$id."'");
 			 
 		    return $result;
@@ -273,11 +273,11 @@
 			}
 		}
 		
-		function update_user_university($id, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
+		function update_user_university($id, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
 		{			
 			$result = $this->db->query("UPDATE contestant_university SET contestant_university_name='".$nama_universitas."',
 							contestant_university_address='".$alamat_universitas."',contestant_leader_name='".$nama_anggota_satu."',
-							contestant_leader_phone='".$ponsel_anggota_satu."',contestant_leader_email='".$email_anggota_satu."',
+							contestant_leader_phone='".$ponsel_anggota_satu."',
 							contestant_second_name='".$nama_anggota_dua."',contestant_third_name='".$nama_anggota_tiga."',
 							contestant_supervisor_name='".$nama_pembimbing."' WHERE contestant_id = '".$id."'");
 			 
