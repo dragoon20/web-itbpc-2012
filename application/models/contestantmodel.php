@@ -14,8 +14,8 @@
 			$this->load->database();
 			
 			/* SMTP server name, port, user/passwd */
-			$this->host = "ssl://smtp.gmail.com";
-			$this->port = "465";
+			$this->host = "smtp.gmail.com";
+			$this->port = "25";
 			$this->username_mail = "itbpc.official@gmail.com";
 			$this->password_mail = "sambyabya";
 			
@@ -145,6 +145,45 @@
 				$id = $row->contestant_id;
 			}
 			
+			
+			$this->db->query("INSERT INTO contestant_high_school(contestant_id,contestant_name,contestant_phone,contestant_address,contestant_email,".
+							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
+							"('".$id."','".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
+			
+			
+			//email
+			include("Mail.php");
+			
+			/* mail setup recipients, subject etc */
+			$to = $email;
+			$subject = "Pendaftaran JPC";
+			$body = "Kepada ".$nama.",\n\nAnda telah berhasil mendaftar sebagai peserta ITB Junior Programming Contest 2012.\nBerikut data username dan password Anda:\n\n".
+					"username: ".$username."\npassword: ".$password."\n\nSelamat bertanding dalam ITB Junior Programming Contest 2012.";
+			
+			$headers = array ('From' => $this->from,
+			   'To' => $to,
+			   'Subject' => $subject);
+
+			$smtp = Mail::factory('smtp', array('host' => $this->host,
+                                        'port' => $this->port,
+                                        'auth' => true,
+                                        'username' => $this->username_mail,
+                                        'password' => $this->password_mail));
+			$mail = $smtp->send($to, $headers, $body);
+			 
+			if (PEAR::isError($mail)) {
+			   echo $mail->getMessage();
+			} else {
+			   return $result;
+			}
+		}
+		
+		function update_user_high_school($id, $nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
+		{
+			foreach ($query->result() as $row)
+			{
+				$id = $row->contestant_id;
+			}
 			
 			$this->db->query("INSERT INTO contestant_high_school(contestant_id,contestant_name,contestant_phone,contestant_address,contestant_email,".
 							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".

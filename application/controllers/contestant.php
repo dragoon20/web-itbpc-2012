@@ -39,9 +39,37 @@ class contestant extends CI_Controller{
 	
 	public function edit_data_jpc(){
 		
-		$this->load->model('contestantmodel','co');
-		$isi['isi']='jpc_edit_data';
-		$this->load->view('template',$isi);
+		if ((ISSET($_POST['nama_lengkap']))&&(ISSET($_POST['nomor_ponsel']))&&(ISSET($_POST['alamat']))&&
+			(ISSET($_POST['email']))&&(ISSET($_POST['kelas']))&&(ISSET($_POST['nama_sekolah']))&&
+			(ISSET($_POST['alamat_sekolah'])))
+		{
+			$this->load->model('contestantmodel','co');
+			$nama_pembimbing = (ISSET($_POST['nama_pembimbing'])) ? $_POST['nama_pembimbing'] : "";
+			session_start();
+			if (ISSET($_SESSION['contestant_id']))
+			{
+				$result = $this->co->update_user_high_school($_SESSION['contestant_id'],$_POST['nama_lengkap'], $_POST['nomor_ponsel'], $_POST['alamat'], 
+															$_POST['email'], $_POST['kelas'], $_POST['nama_sekolah'], $_POST['alamat_sekolah'], $nama_pembimbing);														
+				if ($result != 0)
+				{
+					redirect('/welcome/index', 'refresh');
+				}
+				else
+				{
+					echo $result;
+				}
+			}
+			else
+			{
+				$isi['message']='Maaf, Anda harus login terlebih dahulu.';
+				$this->load->view('error',$isi);
+			}
+		}
+		else
+		{
+			$isi['isi']='jpc_edit_data';
+			$this->load->view('template',$isi);
+		}
 	}
 	
 	public function upload_data_sma(){
