@@ -1,5 +1,15 @@
 <div class="register_div" style="margin-left:auto;margin-right:auto;">
 	<div id="warning_box" style="color:red;width:330px;height:auto;">
+		<?php
+			if (ISSET($error))
+			{
+				foreach ($error as $temp)
+				{
+					echo "- ".$temp."<br />";
+				}
+			
+			}
+		?>
 	</div>
 	<form action="/itbpc2012/index.php/contestant/edit_data_spc" method="POST">
 		<input type="text" class="register" name="nama_universitas" placeholder="Nama Perguruan Tinggi" value="<?php echo $data['university_name'];?>"> <br>
