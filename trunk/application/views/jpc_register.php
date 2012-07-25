@@ -4,8 +4,13 @@
 
 	<div id="warning_box" style="color:red;width:330px;height:auto;">
 		<?php
-			foreach ($error as $temp)
+			if (ISSET($error))
 			{
+				foreach ($error as $temp)
+				{
+					echo "- ".$temp."<br />";
+				}
+			
 			}
 		?>
 	</div>

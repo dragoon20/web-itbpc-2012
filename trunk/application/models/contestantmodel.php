@@ -154,6 +154,12 @@
 			return ($query->num_rows()+$query2->num_rows());
 		}
 		
+		function check_team($team_name)
+		{
+			$query = $this->db->query("SELECT contestant_id FROM contestant_university WHERE contestant_team_name = '".$team_name."'");
+			return $query->num_rows();
+		}
+		
 		function add_user_high_school($nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{
 			$query = $this->db->query("SELECT contestant_id FROM contestant_high_school");
@@ -267,9 +273,9 @@
 			}
 		}
 		
-		function update_user_university($id, $nama_tim, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
+		function update_user_university($id, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
 		{			
-			$result = $this->db->query("UPDATE contestant_university SET contestant_team_name='".$nama_tim."',contestant_university_name='".$nama_universitas."',
+			$result = $this->db->query("UPDATE contestant_university SET contestant_university_name='".$nama_universitas."',
 							contestant_university_address='".$alamat_universitas."',contestant_leader_name='".$nama_anggota_satu."',
 							contestant_leader_phone='".$ponsel_anggota_satu."',contestant_leader_email='".$email_anggota_satu."',
 							contestant_second_name='".$nama_anggota_dua."',contestant_third_name='".$nama_anggota_tiga."',
