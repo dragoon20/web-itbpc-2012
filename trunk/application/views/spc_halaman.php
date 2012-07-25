@@ -10,6 +10,6 @@
 	Nama Lengkap Anggota Tim #3 : <?php echo $data['third_name'];?> <br>
 	Nama Lengkap Dosen Pembimbing : <?php echo $data['supervisor_name'];?> <br>
 	
-	<a href = "<? echo base_url("contestant/edit_data_spc");?>">Edit Data</a>
-	<a href = "<? echo base_url("contestant/upload_data_universitas");?>">Upload Data</a>
+	<a href = "<?php echo base_url("contestant/edit_data_spc");?>">Edit Data</a>
+	<a href = "<?php echo base_url("contestant/upload_data_universitas");?>">Upload Data</a>
 </div>

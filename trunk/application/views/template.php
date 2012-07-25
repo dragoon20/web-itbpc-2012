@@ -21,7 +21,6 @@ Released   : 20120203
 			$this->load->helper('HTML');
 			$this->load->helper('url');
 			echo link_tag('css/style.css');
-			session_start();
 		?>
 		<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>" > </script>
 		<script type="text/javascript" src="<?php echo base_url("js/all.js");?>" > </script>
@@ -83,7 +82,7 @@ Released   : 20120203
 						else if ($_SESSION['contestant_type'] == '2')
 						{
 							?>
-							<a href="<?php echo base_url("contestant/halaman_sma");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
 					}
