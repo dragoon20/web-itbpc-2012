@@ -54,3 +54,11 @@
 	</div>
 	<br>	
 </div>
+<script>
+	$('#home_navigation').removeClass('current_menu');
+	$('#senior_navigation').removeClass('current_menu');
+	$('#junior_navigation').removeClass('current_menu');
+	$('#gallery_navigation').removeClass('current_menu');
+	$('#faq_navigation').removeClass('current_menu');
+	$('#edit_data_navigation').addClass('current_menu');
+</script>

@@ -22,4 +22,5 @@
 	$('#junior_navigation').removeClass('current_menu');
 	$('#gallery_navigation').removeClass('current_menu');
 	$('#faq_navigation').removeClass('current_menu');
+	$('#edit_data_navigation').removeClass('current_menu');
 </script>
