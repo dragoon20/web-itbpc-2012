@@ -157,49 +157,31 @@ font-size: 80%
 			</script>
 			<div style="margin-top:10px; margin-left:72px; width:100px;" class="fb-like" data-href="http://www.facebook.com/itbpc" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
 		</div>
-		<div style="width:300px;height:140px; margin-top:90px; margin-left:10px;" class="right"> 
+		<div style="width:260px;height:180px; margin-top:60px; margin-left:20px;" class="right"> 
 			<span style="font-size:18px;color:#666;">
 			Pendaftaran ITBPC 2012 <br>
 			dibuka hingga : 
 				<div id="countdown_daftar"></div>
-
-
-
-						<script type="text/javascript">
+					<script type="text/javascript">
 						var cd_ioi=new cdLocalTime("countdown_daftar", "server-php", 0, "September 10, 2012 23:59:00", 0)
 						cd_ioi.displaycountdown("days", formatresults2)
-						</script> 
-						
-						<a href="http://www.twitter.com/itbpc" target="_blank"><img 
-								src="../images/twitter.png"
-								style="
-									width	: 50px;
-									height	: 50px;"
-								title="Follow us on Twitter!"
-						></a>
-						<a href="http://www.facebook.com/itbpc" target="_blank"><img 
-							src="../images/facebook.png"
-							style="
-								width	: 50px;
-								height	: 50px;"	
-							title="Visit our page on Facebook!"
-						></a>
-						<a href="http://www.tokilearning.org" target="_blank"><img 
-							src="../images/toki.png"
-							style="
-								width	: 50px;
-								height	: 50px;"	
-							title="TOKI Learning Center"	
-						></a> 
-						<a 	href="#fragment-4a"
-							id="goToContact" 
-						><img src="../images/contact.png"
-							style="
-								width	: 50px;
-								height	: 50px;"	
-							title="Kontak panitia"	 /></a>
+					</script> 
+					<br>
+				<div style="margin-left:-5px;">
+					<a href="http://www.twitter.com/itbpc" target="_blank">
+						<img src="../images/twitter.png" style="width:50px; height:50px;" title="Follow us on Twitter!"> 
+					</a>
+					<a href="http://www.facebook.com/itbpc" target="_blank">
+						<img src="../images/facebook.png" style="width:50px; height:50px;" title="Visit our page on Facebook!">
+					</a>
+					<a href="http://www.tokilearning.org" target="_blank">
+						<img src="../images/toki.png" style="width:50px; height:50px;" title="TOKI Learning Center">
+					</a> 
+					<a href="#fragment-4a" id="goToContact">
+						<img src="../images/contact.png" style="width:50px; height:50px;" title="Kontak panitia"/>
+					</a>
+				</div>
 			<span>
-			
 		</div>
 	</div>
 			

@@ -41,7 +41,7 @@ Released   : 20120203
 				</br>
 				<input type="submit" value="Login" id="login_button"/>
 			</form>
-			<a style="text-decoration:none; margin-left:20px; color:white;" href="<?php echo base_url("contestant/forgot_password");?>">Lupa Password</a>
+			<a style="text-decoration:none; margin-left:20px; color:white; font-size:12px;" href="<?php echo base_url("contestant/forgot_password");?>">Lupa Password</a>
 		</div>
 			<?php
 			}
@@ -121,7 +121,6 @@ Released   : 20120203
 			<?php echo $this->load->view('footer'); ?>
 		</div>
 	</body>
-
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$('#login_box').hide();
