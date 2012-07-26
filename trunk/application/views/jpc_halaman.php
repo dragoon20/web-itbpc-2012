@@ -21,26 +21,29 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_address']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor']?> 
-		<br><br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Kartu Pelajar -->
-		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Bukti Pembayaran -->
-	</div>
-	<div>
+		<br><br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<?php
+			if (ISSET($kartu))
+			{
+				foreach ($kartu as $temp)
+				{
+					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
+				}
+			}
+		?>
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		<?php
 			if (ISSET($bukti))
 			{
 				foreach ($bukti as $temp)
 				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
-				}
-			}
-			if (ISSET($kartu))
-			{
-				foreach ($kartu as $temp)
-				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
+					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
 				}
 			}
 		?>
+	</div>
+	<div>
+		
 	</div>
 	<div style="clear:both">
 	</div>
