@@ -93,9 +93,9 @@
 					// Message from server...
 					if (iframeId2.contentDocument) {
 						content2 = iframeId2.contentDocument.body.innerHTML;
-					} else if (iframeId.contentWindow) {
+					} else if (iframeId2.contentWindow) {
 						content2 = iframeId2.contentWindow.document.body.innerHTML;
-					} else if (iframeId.document) {
+					} else if (iframeId2.document) {
 						content2 = iframeId2.document.body.innerHTML;
 					}
 			
@@ -127,9 +127,9 @@
 							// Message from server...
 							if (iframeId3.contentDocument) {
 								content3 = iframeId3.contentDocument.body.innerHTML;
-							} else if (iframeId.contentWindow) {
+							} else if (iframeId3.contentWindow) {
 								content3 = iframeId3.contentWindow.document.body.innerHTML;
-							} else if (iframeId.document) {
+							} else if (iframeId3.document) {
 								content3 = iframeId3.document.body.innerHTML;
 							}
 					
@@ -161,9 +161,9 @@
 									// Message from server...
 									if (iframeId4.contentDocument) {
 										content4 = iframeId4.contentDocument.body.innerHTML;
-									} else if (iframeId.contentWindow) {
+									} else if (iframeId4.contentWindow) {
 										content4 = iframeId4.contentWindow.document.body.innerHTML;
-									} else if (iframeId.document) {
+									} else if (iframeId4.document) {
 										content4 = iframeId4.document.body.innerHTML;
 									}
 							
@@ -199,12 +199,11 @@
 							// Del the iframe...
 							setTimeout('iframeId3.parentNode.removeChild(iframeId3)', 250);
 						}
-						
 						if (iframeId3.addEventListener) iframeId3.addEventListener("load", eventHandler3, true);
 						if (iframeId3.attachEvent) iframeId3.attachEvent("onload", eventHandler3);
 						
 						// Set properties of form...
-						form3.setAttribute("target", "upload_iframe2");
+						form3.setAttribute("target", "upload_iframe3");
 						
 						// Submit the form...
 						form3.submit();

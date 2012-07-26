@@ -328,7 +328,7 @@
 			}
 			if (!empty($templink))
 			{
-				if (count($templink)==1)
+				if ($flag==0)
 				{
 					$result = $this->db->query("UPDATE contestant_image SET contestant_image_url = '".$link."' WHERE image_id = '".$ids[0]."'");
 				}
@@ -340,7 +340,7 @@
 					}
 					else
 					{
-						$i = 0;
+						$i = -1;
 						$flagtemp = 0;
 						foreach ($templink as $temp)
 						{
@@ -350,7 +350,7 @@
 								$flagtemp = $i;
 							}
 						}
-						if ($flagtemp!=0)
+						if ($flagtemp!=-1)
 						{
 							$result = $this->db->query("UPDATE contestant_image SET contestant_image_url = '".$link."' WHERE image_id = '".$ids[$flagtemp]."'");
 						}
@@ -366,7 +366,7 @@
 				$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
 			}
 			
-			//return $result;
+			return $result;
 		}
 		
 		function get_image($id,$type)

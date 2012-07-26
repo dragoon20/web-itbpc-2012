@@ -18,6 +18,7 @@ Released   : 20120203
 			$_SESSION['url'] = current_url();
 			echo link_tag('css/style.css');
 		?>
+		<link rel="shortcut icon" href="<?php echo base_url("images/itbpc2012_64x64.ico"); ?>" type="image/x-icon">
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="ITBPC 2012 adalah kontes pemrograman dan seminar tahunan yang diselenggarakan oleh Program Studi Teknik Informatika ITB.">
 		<meta name="keywords" content="ITBPC, ITBPC 2012, ITBPC 2011, ITBPC 2010, ITB Programming Contest 2010, ITB Programming Contest 2011, ITB Programming Contest 2012">

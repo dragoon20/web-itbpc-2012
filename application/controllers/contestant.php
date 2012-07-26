@@ -295,26 +295,29 @@ class contestant extends CI_Controller{
 				if (is_uploaded_file($_FILES["userfile"]["tmp_name"]))
 				{
 					$this->load->model('contestantmodel','co');
-					$this->co->upload($_SESSION['contestant_id'],1,$_GET['flag'],end(explode(".",$_FILES["userfile"]["name"])));
+					$result = $this->co->upload($_SESSION['contestant_id'],1,$_GET['flag'],end(explode(".",$_FILES["userfile"]["name"])));
 					
-					$config['upload_path'] = './uploads/KTM/';
-					$config['allowed_types'] = 'gif|jpg|png';
-					$config['file_name'] = 'KTM'.$_SESSION['contestant_id'].'_'.$_GET['flag'];
-					$config['overwrite'] = TRUE;
-					$config['max_width']  = '1024';
-					$config['max_height']  = '768';
-
-					$this->load->library('upload', $config);
-
-					if ( ! $this->upload->do_upload())
+					if ($result!=0)
 					{
-						//$error = array('error' => $this->upload->display_errors());
-						//echo $error['error'];
-						echo "fail";
-					}
-					else
-					{
-						echo "success";
+						$config['upload_path'] = './uploads/KTM/';
+						$config['allowed_types'] = 'gif|jpg|png';
+						$config['file_name'] = 'KTM'.$_SESSION['contestant_id'].'_'.$_GET['flag'];
+						$config['overwrite'] = TRUE;
+						$config['max_width']  = '1024';
+						$config['max_height']  = '768';
+
+						$this->load->library('upload', $config);
+
+						if ( ! $this->upload->do_upload())
+						{
+							//$error = array('error' => $this->upload->display_errors());
+							//echo $error['error'];
+							echo "fail";
+						}
+						else
+						{
+							echo "success";
+						}
 					}
 				}
 				else

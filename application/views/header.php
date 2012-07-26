@@ -145,7 +145,7 @@ font-size: 80%
 			</script>
 		</div>
 		<div style="width:220px;height:210px; margin-top:20px; margin-left:85px;" class="left">
-			<img src="<?php echo base_url("images/itbpc2012.png");?>" width="100%">
+			<a href="<?php echo base_url("welcome/index");?>"><img src="<?php echo base_url("images/itbpc2012.png");?>" width="100%"></a>
 			<div id="fb-root"></div>
 			<script>(function(d, s, id) {
 			  var js, fjs = d.getElementsByTagName(s)[0];

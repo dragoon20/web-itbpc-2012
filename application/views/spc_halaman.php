@@ -9,10 +9,21 @@
 		Nama Lengkap Anggota Tim #2 <br>
 		Nama Lengkap Anggota Tim #3 <br>
 		Nama Lengkap Dosen Pembimbing <br><br>
-		Kartu Tanda Mahasiswa #1 <br>
-		Kartu Tanda Mahasiswa #2 <br>
-		Kartu Tanda Mahasiswa #3 <br>
-		Bukti Pembayaran <br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Kartu Tanda Mahasiswa #1</span> 
+		</div>
+		<br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Kartu Tanda Mahasiswa #2</span> 
+		</div>
+		<br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Kartu Tanda Mahasiswa #3</span> 
+		</div>
+		<br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Bukti Pembayaran</span> 
+		</div>
 	</div>
 	<div class="left" style="width:50%"> 
 		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['team_name'];?>
@@ -26,24 +37,48 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor_name']?> 
 		<br><br>
 		<?php
-			if (ISSET($kartu))
+			if ((ISSET($kartu))&&(count($kartu)!=0))
 			{
+				$j=3;
 				foreach ($kartu as $temp)
 				{
-					echo ": &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='".$temp->contestant_image_url."' style='width:200px;' /><br>";
+					$j--;
+					echo '<div style="height:180px;">
+							<div class="left" style="height:180px;">
+								<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>	
+							</div>
+							<img src="'.$temp->contestant_image_url.'" style="height:180px;" /></div><br>';
 				}
+				for ($i=0;$i<$j;$i++)
+					echo '<div style="height:180px;">
+							<div class="left" style="height:180px;">
+								<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>	
+							</div></div><br>';
 			}
-		?>
-		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<?php
-			if (ISSET($bukti))
+			else
 			{
-				foreach ($bukti as $temp)
-				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
-				}
+				for ($i=0;$i<3;$i++)
+					echo '<div style="height:180px;">
+							<div class="left" style="height:180px;">
+								<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>	
+							</div></div><br>';
 			}
 		?>
+		<div style="height:180px;">
+			<div class="left" style="height:180px;">
+				<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			</div>
+			<?php
+				if (ISSET($bukti))
+				{
+					foreach ($bukti as $temp)
+					{
+						echo "<img src='".$temp->contestant_image_url."' style='height:180px;' />";
+					}
+				}
+			?>
+		</div>
+		<br>
 	</div>
 	<div style="clear:both">
 	</div>
