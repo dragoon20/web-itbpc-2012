@@ -1,4 +1,12 @@
-<div id="gallery_menu">
+<center>
+	<video width="640" height="480" controls="controls" autoplay="autoplay">
+		<source src="<?php echo base_url("video/ITBPC.mp4"); ?>" type="video/mp4" />
+		<source src="<?php echo base_url("video/ITBPC.ogv"); ?>" type="video/ogg" />
+		<source src="<?php echo base_url("video/ITBPC.webm"); ?>" type="video/webm" />
+		Your browser does not support the video tag.
+	</video>
+</center>
+<!--<div id="gallery_menu">
 	<ul>
 		<li> <a target="_blank" href="<?php echo base_url("images/foto_1.jpg");?>"> <img title="Peserta ITBJPC 2011" src="<?php echo base_url("images/foto_1.jpg");?>" width="100%;"> </a></li>
 		<li> <a target="_blank" href="<?php echo base_url("images/foto_2.jpg");?>"> <img title="" src="<?php echo base_url("images/foto_2.jpg");?>" width="100%;"> </a></li>
@@ -40,6 +48,7 @@
 		<li> <a target="_blank" href="<?php echo base_url("images/foto_24.jpg");?>"><img src="<?php echo base_url("images/foto_24.jpg");?>" width="100%;"> </a></li>
 	</ul> 
 </div>
+-->
 <script> 
 	$('#home_navigation').removeClass('current_menu');
 	$('#senior_navigation').removeClass('current_menu');
