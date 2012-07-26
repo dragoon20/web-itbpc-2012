@@ -24,25 +24,23 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['second_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['third_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor_name']?> 
-		<br><br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- KTM #1 -->
-		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- KTM #2 -->
-		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- KTM #3 -->
-		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- BUKTI PEMBAYARAN -->
-	</div>
-	<div>
+		<br><br>
+		<?php
+			if (ISSET($kartu))
+			{
+				foreach ($kartu as $temp)
+				{
+					echo ": &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src='".$temp->contestant_image_url."' style='width:200px;' /><br>";
+				}
+			}
+		?>
+		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<?php
 			if (ISSET($bukti))
 			{
 				foreach ($bukti as $temp)
 				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
-				}
-			}
-			if (ISSET($kartu))
-			{
-				foreach ($kartu as $temp)
-				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
+					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
 				}
 			}
 		?>
