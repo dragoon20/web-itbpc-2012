@@ -8,9 +8,13 @@
 		Nama Sekolah  <br>
 		Alamat Sekolah  <br>
 		Nama Pembimbing <br><br>
-		
-		Kartu Pelajar <br>
-		Bukti Pembayaran <br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Kartu Pelajar</span> 
+		</div>
+		<br>
+		<div style="height:180px;">
+			<span style="line-height:180px;vertical-align:middle;">Bukti Pembayaran</span> <br>
+		</div>
 	</div>
 	<div class="left" style="width:60%"> 
 		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['name'];?> 
@@ -21,26 +25,36 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_address']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor']?> 
-		<br><br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		<?php
-			if (ISSET($kartu))
-			{
-				foreach ($kartu as $temp)
+		<br><br>
+		<div style="height:180px;">
+			<div class="left" style="height:180px;">
+				<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>	
+			</div>
+			<?php
+				if (ISSET($kartu))
 				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
+					foreach ($kartu as $temp)
+					{
+						echo "<img src='".$temp->contestant_image_url."' style='height:180px;' />";
+					}
 				}
-			}
-		?>
-		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		<?php
-			if (ISSET($bukti))
-			{
-				foreach ($bukti as $temp)
+			?>
+		</div>
+		<br>
+		<div style="height:180px;">	
+			<div class="left" style="height:180px;">
+				<span style="line-height:180px;vertical-align:middle;">: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+			</div>
+			<?php
+				if (ISSET($bukti))
 				{
-					echo "<img src='".$temp->contestant_image_url."' style='width:200px;' />";
+					foreach ($bukti as $temp)
+					{
+						echo "<img src='".$temp->contestant_image_url."' style='height:180px;' />";
+					}
 				}
-			}
-		?>
+			?>
+		</div>
 	</div>
 	<div>
 		
