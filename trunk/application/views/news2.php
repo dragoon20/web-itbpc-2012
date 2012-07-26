@@ -9,7 +9,7 @@
 	<div style="margin-bottom:10px; height:400px;">
 		<div style="float:left; width:49%; height:100%;"> 
 			<center> 
-				<a href="<?php echo base_url("juniorpc/jpc_deskripsi");?>"> <img src="<?php echo base_url("images/jpc.png");?>"> </a>
+				<a href="<?php echo base_url("juniorpc/jpc_deskripsi");?>"> <img name="jpcpic" src="<?php echo base_url("images/jpc.png");?>" onMouseOver="jpcpic.src='<?php echo base_url("images/jpc2.png");?>'" onMouseOut="jpcpic.src='<?php echo base_url("images/jpc.png");?>'"> </a>
 			</center>
 			<br><br>
 			<h3 style="margin-bottom:0px"><a href="<?php echo base_url("juniorpc/jpc_deskripsi");?>" class="link_orange"> JUNIOR PROGRAMMING CONTEST </a></h3>
@@ -20,7 +20,7 @@
 		
 		<div style="float:left; width:49%; height:100%;"> 
 			<center> 
-				<a href="<?php echo base_url("seniorpc/spc_deskripsi");?>"> <img src="<?php echo base_url("images/spc.png");?>"> </a>
+				<a href="<?php echo base_url("seniorpc/spc_deskripsi");?>"> <img name="spcpic" src="<?php echo base_url("images/spc.png");?>" onMouseOver="spcpic.src='<?php echo base_url("images/spc2.png");?>'" onMouseOut="spcpic.src='<?php echo base_url("images/spc.png");?>'"> </a>
 			</center>
 			<br><br>
 			<h3 style="margin-bottom:0px"><a href="<?php echo base_url("seniorpc/spc_deskripsi");?>" class="link_blue"> SENIOR PROGRAMMING CONTEST </a></h3>
