@@ -34,8 +34,7 @@ class contestant extends CI_Controller{
 		}
 		else
 		{
-			$isi['isi']='login';
-			$this->load->view('template',$isi);
+			redirect('/welcome/index', 'refresh');
 		}
 	}
 	
@@ -47,6 +46,8 @@ class contestant extends CI_Controller{
 			{
 				$this->load->model('contestantmodel','co');
 				$isi['isi']='jpc_halaman';
+				$isi['kartu']=$this->co->get_image($_SESSION['contestant_id'],1);
+				$isi['bukti']=$this->co->get_image($_SESSION['contestant_id'],2);
 				$isi['data']=$this->co->get_data_junior($_SESSION['contestant_id']);
 				$this->load->view('template',$isi);
 			}
@@ -73,6 +74,8 @@ class contestant extends CI_Controller{
 			{
 				$this->load->model('contestantmodel','co');
 				$isi['isi']='spc_halaman';
+				$isi['kartu']=$this->co->get_image($_SESSION['contestant_id'],1);
+				$isi['bukti']=$this->co->get_image($_SESSION['contestant_id'],2);
 				$isi['data']=$this->co->get_data_senior($_SESSION['contestant_id']);
 				$this->load->view('template',$isi);
 			}
@@ -247,22 +250,30 @@ class contestant extends CI_Controller{
 		
 		if (ISSET($_SESSION['contestant_id']))
 		{
-			$this->load->model('contestantmodel','co');
-			$this->co->upload($_SESSION['contestant_id'],1,0);
-			
-			$config['upload_path'] = './uploads/Kartu Pelajar/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['file_name'] = 'KP'.$_SESSION['contestant_id'];
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
-
-			$this->load->library('upload', $config);
-
-			if ( ! $this->upload->do_upload())
+			if (is_uploaded_file($_FILES["userfile"]["tmp_name"]))
 			{
-				//$error = array('error' => $this->upload->display_errors());
-				//echo $error['error'];
-				echo "fail";
+				$this->load->model('contestantmodel','co');
+				$this->co->upload($_SESSION['contestant_id'],1,0,end(explode(".",$_FILES["userfile"]["name"])));
+				
+				$config['upload_path'] = './uploads/Kartu Pelajar/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['file_name'] = 'KP'.$_SESSION['contestant_id'];
+				$config['overwrite'] = TRUE;
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload())
+				{
+					//$error = array('error' => $this->upload->display_errors());
+					//echo $error['error'];
+					echo "fail";
+				}
+				else
+				{
+					echo "success";
+				}
 			}
 			else
 			{
@@ -281,22 +292,30 @@ class contestant extends CI_Controller{
 		{
 			if (ISSET($_GET['flag']))
 			{
-				$this->load->model('contestantmodel','co');
-				$this->co->upload($_SESSION['contestant_id'],1,$_GET['flag']);
-				
-				$config['upload_path'] = './uploads/KTM/';
-				$config['allowed_types'] = 'gif|jpg|png';
-				$config['file_name'] = 'KTM'.$_SESSION['contestant_id'].'_'.$_GET['flag'];
-				$config['max_width']  = '1024';
-				$config['max_height']  = '768';
-
-				$this->load->library('upload', $config);
-
-				if ( ! $this->upload->do_upload())
+				if (is_uploaded_file($_FILES["userfile"]["tmp_name"]))
 				{
-					//$error = array('error' => $this->upload->display_errors());
-					//echo $error['error'];
-					echo "fail";
+					$this->load->model('contestantmodel','co');
+					$this->co->upload($_SESSION['contestant_id'],1,$_GET['flag'],end(explode(".",$_FILES["userfile"]["name"])));
+					
+					$config['upload_path'] = './uploads/KTM/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['file_name'] = 'KTM'.$_SESSION['contestant_id'].'_'.$_GET['flag'];
+					$config['overwrite'] = TRUE;
+					$config['max_width']  = '1024';
+					$config['max_height']  = '768';
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload())
+					{
+						//$error = array('error' => $this->upload->display_errors());
+						//echo $error['error'];
+						echo "fail";
+					}
+					else
+					{
+						echo "success";
+					}
 				}
 				else
 				{
@@ -319,19 +338,28 @@ class contestant extends CI_Controller{
 		
 		if (ISSET($_SESSION['contestant_id']))
 		{
-			$this->load->model('contestantmodel','co');
-			$this->co->upload($_SESSION['contestant_id'],2,0);
-			$config['upload_path'] = './uploads/bukti/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['file_name'] = 'Bukti'.$_SESSION['contestant_id'];
-			$config['max_width']  = '1024';
-			$config['max_height']  = '768';
-
-			$this->load->library('upload', $config);
-
-			if ( ! $this->upload->do_upload())
+			if (is_uploaded_file($_FILES["userfile"]["tmp_name"]))
 			{
-				echo "fail";
+				$this->load->model('contestantmodel','co');
+				$this->co->upload($_SESSION['contestant_id'],2,0,end(explode(".",$_FILES["userfile"]["name"])));
+				
+				$config['upload_path'] = './uploads/bukti/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['file_name'] = 'Bukti'.$_SESSION['contestant_id'];
+				$config['overwrite'] = TRUE;
+				$config['max_width']  = '1024';
+				$config['max_height']  = '768';
+
+				$this->load->library('upload', $config);
+
+				if ( ! $this->upload->do_upload())
+				{
+					echo "fail";
+				}
+				else
+				{
+					echo "success";
+				}
 			}
 			else
 			{

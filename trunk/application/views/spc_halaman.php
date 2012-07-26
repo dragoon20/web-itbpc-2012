@@ -21,6 +21,24 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['third_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor_name']?> 
 	</div>
+	<div>
+		<?php
+			if (ISSET($bukti))
+			{
+				foreach ($bukti as $temp)
+				{
+					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
+				}
+			}
+			if (ISSET($kartu))
+			{
+				foreach ($kartu as $temp)
+				{
+					echo "<img src='".$temp->contestant_image_url."' style='width:200px;height:200px;' />";
+				}
+			}
+		?>
+	</div>
 	<div style="clear:both">
 	</div>
 	<div style="margin-top:20px;">
