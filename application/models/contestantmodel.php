@@ -22,6 +22,37 @@
 			$this->from = "ITBPC Official 2012 <itbpc.official@gmail.com>";
 		}
 		
+		function approve($id)
+		{
+			$result = $this->db->query("UPDATE contestant SET contestant_flag=1 WHERE contestant_id='".$id."'");
+			return $result;
+		}
+		
+		function unapprove($id)
+		{
+			$result = $this->db->query("UPDATE contestant SET contestant_flag=0 WHERE contestant_id='".$id."'");
+			return $result;
+		}
+		
+		function get_junior()
+		{
+			$query = $this->db->query("SELECT a.contestant_id as contestant_id, contestant_name, contestant_phone, contestant_email, contestant_class,
+										contestant_school_name, contestant_flag FROM contestant_high_school AS a, contestant AS b WHERE a.contestant_id=b.contestant_id");
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$temp['id'] = $row->contestant_id;
+				$temp['name'] = $row->contestant_name;
+				$temp['phone'] = $row->contestant_phone;
+				$temp['email'] = $row->contestant_email;
+				$temp['class'] = $row->contestant_class;
+				$temp['school_name'] = $row->contestant_school_name;
+				$temp['flag'] = $row->contestant_flag;
+				array_push($result,$temp);
+			}
+			return $result;				
+		}
+		
 		function get_data_junior($id)
 		{
 			$query = $this->db->query("SELECT contestant_name,contestant_phone, contestant_address, contestant_email, contestant_class,
@@ -40,6 +71,25 @@
 				$result['supervisor'] = $row->contestant_supervisor;
 			}
 			return $result;
+		}
+		
+		function get_senior()
+		{
+			$query = $this->db->query("SELECT a.contestant_id as contestant_id, contestant_team_name, contestant_university_name, contestant_leader_email, contestant_leader_phone,
+										contestant_leader_name, contestant_flag FROM contestant_university AS a, contestant AS b WHERE a.contestant_id=b.contestant_id");
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$temp['id'] = $row->contestant_id;
+				$temp['name'] = $row->contestant_team_name;
+				$temp['phone'] = $row->contestant_leader_phone;
+				$temp['email'] = $row->contestant_leader_email;
+				$temp['leader_name'] = $row->contestant_leader_name;
+				$temp['university_name'] = $row->contestant_university_name;
+				$temp['flag'] = $row->contestant_flag;
+				array_push($result,$temp);
+			}
+			return $result;				
 		}
 		
 		function get_data_senior($id)

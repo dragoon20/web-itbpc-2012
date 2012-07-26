@@ -98,6 +98,14 @@ Released   : 20120203
 							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
+						else if ($_SESSION['contestant_type'] == '3')
+						{
+							?>
+							<a id="manage_spc" href="<?php echo base_url("admin/manage_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> Manage SPC </a>
+		
+							<a id="manage_jpc" href="<?php echo base_url("admin/manage_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> Manage JPC </a>
+							<?php
+						}
 					}
 					else
 					{?>
