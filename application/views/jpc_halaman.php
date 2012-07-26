@@ -53,3 +53,11 @@
 		<a style="margin-left:20px;" class="link_blue" href = "<?php echo base_url("contestant/change_password");?>">Ubah Password</a>
 	</div>
 </div>
+<script>
+	$('#home_navigation').removeClass('current_menu');
+	$('#senior_navigation').removeClass('current_menu');
+	$('#junior_navigation').removeClass('current_menu');
+	$('#gallery_navigation').removeClass('current_menu');
+	$('#faq_navigation').removeClass('current_menu');
+	$('#edit_data_navigation').addClass('current_menu');
+</script>

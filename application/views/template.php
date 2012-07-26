@@ -88,13 +88,13 @@ Released   : 20120203
 						if ($_SESSION['contestant_type'] == '1')
 						{
 							?>
-							<a href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '2')
 						{
 							?>
-							<a href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
 							<?php
 						}
 					}
