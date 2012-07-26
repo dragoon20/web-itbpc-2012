@@ -93,7 +93,7 @@
 					}
 					
 					// Del the iframe...
-					setTimeout('iframeId.parentNode.removeChild(iframeId)', 250);
+					setTimeout('iframeId2.parentNode.removeChild(iframeId2)', 250);
 				};
 				
 				if (iframeId2.addEventListener) iframeId2.addEventListener("load", eventHandler2, true);

@@ -165,22 +165,36 @@ font-size: 80%
 					<script type="text/javascript">
 						var cd_ioi=new cdLocalTime("countdown_daftar", "server-php", 0, "September 10, 2012 23:59:00", 0)
 						cd_ioi.displaycountdown("days", formatresults2)
-					</script> 
-					<br>
-				<div style="margin-left:-5px;">
-					<a href="http://www.twitter.com/itbpc" target="_blank">
-						<img src="../images/twitter.png" style="width:50px; height:50px;" title="Follow us on Twitter!"> 
-					</a>
-					<a href="http://www.facebook.com/itbpc" target="_blank">
-						<img src="../images/facebook.png" style="width:50px; height:50px;" title="Visit our page on Facebook!">
-					</a>
-					<a href="http://www.tokilearning.org" target="_blank">
-						<img src="../images/toki.png" style="width:50px; height:50px;" title="TOKI Learning Center">
-					</a> 
-					<a href="#fragment-4a" id="goToContact">
-						<img src="../images/contact.png" style="width:50px; height:50px;" title="Kontak panitia"/>
-					</a>
-				</div>
+						</script> 
+						
+						<a href="http://www.twitter.com/itbpc" target="_blank"><img 
+								src="<?php echo base_url("images/twitter.png");?>"
+								style="
+									width	: 50px;
+									height	: 50px;"
+								title="Follow us on Twitter!"
+						></a>
+						<a href="http://www.facebook.com/itbpc" target="_blank"><img 
+							src="<?php echo base_url("images/facebook.png");?>"
+							style="
+								width	: 50px;
+								height	: 50px;"	
+							title="Visit our page on Facebook!"
+						></a>
+						<a href="http://www.tokilearning.org" target="_blank"><img 
+							src="<?php echo base_url("images/toki.png");?>"
+							style="
+								width	: 50px;
+								height	: 50px;"	
+							title="TOKI Learning Center"	
+						></a> 
+						<a 	href="#fragment-4a"
+							id="goToContact" 
+						><img src="<?php echo base_url("images/contact.png");?>"
+							style="
+								width	: 50px;
+								height	: 50px;"	
+							title="Kontak panitia"	 /></a>
 			<span>
 		</div>
 	</div>

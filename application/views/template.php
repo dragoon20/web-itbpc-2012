@@ -12,17 +12,21 @@ Released   : 20120203
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<meta name="description" content="ITBPC 2012 adalah kontes pemrograman dan seminar tahunan yang diselenggarakan oleh Program Studi Teknik Informatika ITB.">
-		<meta name="keywords" content="ITBPC, ITBPC 2012, ITBPC 2011, ITBPC 2010, ITB Programming Contest 2010, ITB Programming Contest 2011, ITB Programming Contest 2012">
 		<?php
 			$this->load->helper('HTML');
 			$this->load->helper('url');
 			$_SESSION['url'] = current_url();
 			echo link_tag('css/style.css');
 		?>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="ITBPC 2012 adalah kontes pemrograman dan seminar tahunan yang diselenggarakan oleh Program Studi Teknik Informatika ITB.">
+		<meta name="keywords" content="ITBPC, ITBPC 2012, ITBPC 2011, ITBPC 2010, ITB Programming Contest 2010, ITB Programming Contest 2011, ITB Programming Contest 2012">
+		<meta property="og:title" content="Institut Teknologi Bandung Programming Contest 2012">
+		<meta property="og:url" content="<?php echo base_url();?>">
+		<meta property="og:image" content="<?php echo base_url("images/itbpc2012.png");?>">
+
+		<title>Institut Teknologi Bandung Programming Contest 2012</title>
+		
 		<script type="text/javascript" src="<?php echo base_url("js/jquery-1.7.2.js");?>" > </script>
 		<script type="text/javascript" src="<?php echo base_url("js/all.js");?>" > </script>
 	</head>

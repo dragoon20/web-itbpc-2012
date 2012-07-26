@@ -132,7 +132,7 @@
 			/* mail setup recipients, subject etc */
 			$to = $email;
 			$subject = "Permintaan perubahan password";
-			$link = "http://localhost/itbpc2012/index.php/contestant/reset_password?code=".$code;
+			$link = base_url("contestant/reset_password?code=".$code);
 			$body = "Anda telah meminta perubahan password.\nUntuk mengubah password anda silahkan ke link berikut:\n\n".$link;
 			
 			$headers = array ('From' => $this->from,
@@ -290,7 +290,7 @@
 		    return $result;
 		}
 		
-		function upload($id,$type,$flag)
+		function upload($id,$type,$flag,$extension)
 		{
 			$this->load->helper('url');
 			$link = "";
@@ -298,27 +298,82 @@
 			{
 				if ($type==1)
 				{
-					$link = base_url("uploads/Kartu Pelajar/KP".$id);
+					$link = base_url("uploads/Kartu Pelajar/KP".$id.".".$extension);
 				}
 				else if ($type==2)
 				{
-					$link = base_url("uploads/bukti/Bukti".$id);
+					$link = base_url("uploads/bukti/Bukti".$id.".".$extension);
 				}
 			}
 			else
 			{
 				if ($type==1)
 				{
-					$link = base_url("uploads/KTM/KTM".$id."_".$flag);
+					$link = base_url("uploads/KTM/KTM".$id."_".$flag.".".$extension);
 				}
 				else if ($type==2)
 				{
-					$link = base_url("uploads/bukti/Bukti".$id);
+					$link = base_url("uploads/bukti/Bukti".$id.".".$extension);
 				}
 			}
-			$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
 			
-			return $result;
+			$query = $this->db->query("SELECT image_id, contestant_image_url FROM contestant_image WHERE contestant_id='".$id."' AND contestant_image_type='".$type."'");
+			$i = 0;
+			$ids = array();
+			$templink = array();
+			foreach ($query->result() as $row)
+			{
+				$ids[$i++] = $row->image_id;
+				array_push($templink,end(explode('_',$row->contestant_image_url)));
+			}
+			if (!empty($templink))
+			{
+				if (count($templink)==1)
+				{
+					$result = $this->db->query("UPDATE contestant_image SET contestant_image_url = '".$link."' WHERE image_id = '".$ids[0]."'");
+				}
+				else
+				{
+					if ($query->num_rows()==3)
+					{
+						$result = $this->db->query("UPDATE contestant_image SET contestant_image_url = '".$link."' WHERE image_id = '".$ids[$flag-1]."'");
+					}
+					else
+					{
+						$i = 0;
+						$flagtemp = 0;
+						foreach ($templink as $temp)
+						{
+							$i++;
+							if ($temp[0]==$flag)
+							{
+								$flagtemp = $i;
+							}
+						}
+						if ($flagtemp!=0)
+						{
+							$result = $this->db->query("UPDATE contestant_image SET contestant_image_url = '".$link."' WHERE image_id = '".$ids[$flagtemp]."'");
+						}
+						else
+						{
+							$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
+						}
+					}
+				}
+			}
+			else
+			{	
+				$result = $this->db->query("INSERT INTO contestant_image(contestant_id,contestant_image_url,contestant_image_type) VALUES ('".$id."','".$link."','".$type."')");
+			}
+			
+			//return $result;
+		}
+		
+		function get_image($id,$type)
+		{
+			$query = $this->db->query("SELECT contestant_image_url FROM contestant_image WHERE contestant_id = '".$id."' AND contestant_image_type = '".$type."'");
+			
+			return $query->result();
 		}
 	}
 
