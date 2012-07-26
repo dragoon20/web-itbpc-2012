@@ -7,7 +7,10 @@
 		Kelas dan Jurusan<br> 
 		Nama Sekolah  <br>
 		Alamat Sekolah  <br>
-		Nama Pembimbing <br>
+		Nama Pembimbing <br><br>
+		
+		Kartu Pelajar <br>
+		Bukti Pembayaran <br>
 	</div>
 	<div class="left" style="width:60%"> 
 		: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['name'];?> 
@@ -18,6 +21,8 @@
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_name']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['school_address']?> 
 		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data['supervisor']?> 
+		<br><br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Kartu Pelajar -->
+		<br>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!-- Bukti Pembayaran -->
 	</div>
 	<div>
 		<?php
