@@ -238,3 +238,11 @@ box-shadow:         0px 6px 5px rgba(50, 50, 50, 0.3); }
 #gallery_menu ul li {float:left;display:block;width:250px;margin:10px;z-index:4;}
 #gallery_menu ul li img {opacity:0.8;cursor:pointer;-webkit-transition: all 0.6s ease; -moz-transition: all 0.6s ease; -o-transition: all 0.6s ease;width:250px;}
 #gallery_menu ul li img:hover {opacity:1;}
+
+/* ADMIN
+-------------------------------------------------------------------- */
+.table_admin {margin: 1em 1em 1em 0; background: whitesmoke; border-collapse: collapse;}
+.table_admin th, .table_admin td { border: 1px silver gainsboro; padding-top:4px; padding-bottom:4px; border:1px solid #Fff;}
+.table_admin th {background: #007cc2; color:#fff; text-align: center; padding-top:5px; padding-bottom:5px;}
+.table_admin tr:hover td {background:#ecf1f7 !important;}
+.table_admin caption {margin-left: inherit; margin-right: inherit;}
