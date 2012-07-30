@@ -1,11 +1,11 @@
-<table>
+<table class="table_admin">
 	<tr>
-		<th>Nama</th>
-		<th>Nomor Ponsel</th>
-		<th>Email</th>
-		<th>Kelas</th>
-		<th>Nama Sekolah</th>
-		<th>Status</th>
+		<th width="20%;">Nama</th>
+		<th width="15%;">Nomor Ponsel</th>
+		<th width="25%;">Email</th>
+		<th width="15%;">Kelas</th>
+		<th width="25%;">Nama Sekolah</th>
+		<th width="20%;">Status</th>
 	</tr>
 	<?php
 		foreach ($contestant as $each)
