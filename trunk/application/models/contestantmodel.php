@@ -24,20 +24,30 @@
 		
 		function approve($id)
 		{
-			$result = $this->db->query("UPDATE contestant SET contestant_flag=1 WHERE contestant_id='".$id."'");
+			$data = array(
+						'contestant_flag' => 1
+					);
+			$this->db->where('contestant_id',$id);
+			$result = $this->db->update('contestant',$data);
 			return $result;
 		}
 		
 		function unapprove($id)
 		{
-			$result = $this->db->query("UPDATE contestant SET contestant_flag=0 WHERE contestant_id='".$id."'");
+			$data = array(
+						'contestant_flag' => 0
+					);
+			$this->db->where('contestant_id',$id);
+			$result = $this->db->update('contestant',$data);
 			return $result;
 		}
 		
 		function get_junior()
 		{
-			$query = $this->db->query("SELECT a.contestant_id as contestant_id, contestant_name, contestant_phone, contestant_email, contestant_class,
-										contestant_school_name, contestant_flag FROM contestant_high_school AS a, contestant AS b WHERE a.contestant_id=b.contestant_id");
+			$this->db->select('*');
+			$this->db->from('contestant_high_school');
+			$this->db->join('contestant','contestant.contestant_id=contestant_high_schoold.contestant_id');
+			$query = $this->db->get();
 			$result = array();
 			foreach ($query->result() as $row)
 			{
@@ -55,9 +65,11 @@
 		
 		function get_data_junior($id)
 		{
-			$query = $this->db->query("SELECT contestant_name,contestant_phone, contestant_address, contestant_email, contestant_class,
-										contestant_school_name, contestant_school_address, contestant_supervisor FROM contestant_high_school 
-										WHERE contestant_id = '".$id."'");
+			$this->db->select('contestant_name,contestant_phone, contestant_address, contestant_email, contestant_class,
+										contestant_school_name, contestant_school_address, contestant_supervisor');
+			$this->db->from('contestant_high_school');
+			$this->db->where('contestant_id',$id);
+			$query = $this->db->get();
 			$result = array();
 			foreach ($query->result() as $row)
 			{
@@ -75,8 +87,10 @@
 		
 		function get_senior()
 		{
-			$query = $this->db->query("SELECT a.contestant_id as contestant_id, contestant_team_name, contestant_university_name, contestant_leader_email, contestant_leader_phone,
-										contestant_leader_name, contestant_flag FROM contestant_university AS a, contestant AS b WHERE a.contestant_id=b.contestant_id");
+			$this->db->select('*');
+			$this->db->from('contestant_university');
+			$this->db->join('contestant','contestant.contestant_id=contestant_high_schoold.contestant_id');
+			$query = $this->db->get();
 			$result = array();
 			foreach ($query->result() as $row)
 			{
@@ -94,9 +108,12 @@
 		
 		function get_data_senior($id)
 		{
-			$query = $this->db->query("SELECT contestant_team_name,contestant_university_name, contestant_university_address, contestant_leader_name, 
+			$this->db->select('contestant_team_name,contestant_university_name, contestant_university_address, contestant_leader_name, 
 										contestant_leader_phone, contestant_leader_email, contestant_second_name, contestant_third_name, 
-										contestant_supervisor_name FROM contestant_university WHERE contestant_id = '".$id."'");
+										contestant_supervisor_name');
+			$this->db->from('contestant_university');
+			$this->db->where('contestant_id',$id);
+			$query = $this->db->get();
 			$result = array();
 			foreach ($query->result() as $row)
 			{
@@ -116,7 +133,11 @@
 		function check_user($username, $password)
 		{
 			$password = md5($password);
-			$query = $this->db->query("SELECT contestant_id,contestant_type FROM contestant WHERE contestant_username = '".$username."' AND contestant_password = '".$password."'");
+			$this->db->select('contestant_id,contestant_type');
+			$this->db->from('contestant');
+			$this->db->where('contestant_username',$username);
+			$this->db->where('contestant_password',$password);
+			$query = $this->db->get();
 			$result = array();
 			foreach ($query->result() as $row)
 			{
@@ -128,7 +149,10 @@
 		
 		function check_code($code)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_code = '".$code."'");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant');
+			$this->db->where('contestant_code',$code);
+			$query = $this->db->get();
 			
 			$result = null;
 			foreach ($query->result() as $row)
@@ -142,22 +166,40 @@
 		{
 			$temp = mt_rand(100000,999999);
 			$code = date("YHsdim").$temp;
-			$result = $this->db->query("UPDATE contestant SET contestant_code = '".$code."', contestant_password = '".md5($password)."' WHERE contestant_id = '".$id."'");
+			
+			$data = array(
+						'contestant_code' => $code,
+						'contestant_password' => md5($password)
+					);
+			$this->db->where('contestant_id',$id);
+			$result = $this->db->update('contestant',$data);
 			
 			return $result;
 		}
 		
 		function check_password($id,$password)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_id = '".$id."' AND contestant_password = '".md5($password)."'");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant');
+			$this->db->where('contestant_id',$id);
+			$this->db->where('contestant_password',md5($password));
+			$query = $this->db->get();
 			return $query->num_rows();
 		}
 		
 		function send_reset_code($email)
 		{
 			$id = null;
-			$query = $this->db->query("SELECT contestant_id FROM contestant_high_school WHERE contestant_email = '".$email."'");
-			$query2 = $this->db->query("SELECT contestant_id FROM contestant_university WHERE contestant_leader_email = '".$email."'");
+			
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_high_school');
+			$this->db->where('contestant_email',$email);
+			$query = $this->db->get();
+			
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_university');
+			$this->db->where('contestant_leader_email',$email);
+			$query2 = $this->db->get();
 			
 			foreach ($query->result() as $row)
 			{
@@ -169,7 +211,10 @@
 				$id = $row->contestant_id;
 			}
 			
-			$query = $this->db->query("SELECT contestant_code FROM contestant WHERE contestant_id = '".$id."'");
+			$this->db->select('contestant_code');
+			$this->db->from('contestant');
+			$this->db->where('contestant_id',$id);
+			$query = $this->db->get();
 			
 			foreach ($query->result() as $row)
 			{
@@ -205,20 +250,35 @@
 		
 		function check_email($email)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant_high_school WHERE contestant_email = '".$email."'");
-			$query2 = $this->db->query("SELECT contestant_id FROM contestant_university WHERE contestant_leader_email = '".$email."'");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_high_school');
+			$this->db->where('contestant_email',$email);
+			$query = $this->db->get();
+			
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_university');
+			$this->db->where('contestant_leader_email',$email);
+			$query2 = $this->db->get();
+
 			return ($query->num_rows()+$query2->num_rows());
 		}
 		
 		function check_team($team_name)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant_university WHERE contestant_team_name = '".$team_name."'");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_university');
+			$this->db->where('contestant_team_name',$team_name);
+			$query = $this->db->get();
+			
 			return $query->num_rows();
 		}
 		
 		function add_user_high_school($nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant_high_school");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_high_school');
+			$query = $this->db->get();
+
 			$result = $query->num_rows()+1;
 			$username = "JPC".$result;
 			$temp = mt_rand(100000,999999);
@@ -227,20 +287,37 @@
 			
 			$temp = mt_rand(100000,999999);
 			$code = date("YHsdim").$temp;
-			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password,contestant_type,contestant_code) VALUES ('".$username."','".$hashpassword."','1','".$code."')");
+			
+			$data = array(
+				'contestant_username' => $username,
+				'contestant_password' => $hashpassword,
+				'contestant_type' => '1',
+				'contestant_code' => $code
+			);			
+			$result = $this->db->insert('contestant',$data);
 
-			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_username = '".$username."'");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant');
+			$this->db->where('contestant_username',$username);
+			$query = $this->db->get();
 			
 			foreach ($query->result() as $row)
 			{
 				$id = $row->contestant_id;
-			}
+			}		
 			
-			
-			$this->db->query("INSERT INTO contestant_high_school(contestant_id,contestant_name,contestant_phone,contestant_address,contestant_email,".
-							"contestant_class,contestant_school_name,contestant_school_address,contestant_supervisor) VALUES ".
-							"('".$id."','".$nama."','".$ponsel."', '".$alamat."','".$email."','".$kelas."','".$nama_sekolah."','".$alamat_sekolah."','".$pembimbing."')");
-			
+			$data = array(
+				'contestant_id' => $id,
+				'contestant_name' => $nama,
+				'contestant_phone' => $ponsel,
+				'contestant_address' => $alamat,
+				'contestant_email' => $email,
+				'contestant_class' => $kelas,
+				'contestant_school_name' => $nama_sekolah,
+				'contestant_school_address' => $alamat_sekolah,
+				'contestant_supervisor' => $pembimbing
+			);			
+			$this->db->insert('contestant_high_school',$data);
 			
 			//email
 			include("Mail.php");
@@ -271,16 +348,27 @@
 		
 		function update_user_high_school($id, $nama, $ponsel, $alamat, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{			
-			$result = $this->db->query("UPDATE contestant_high_school SET contestant_name='".$nama."',contestant_phone='".$ponsel."',contestant_address='".$alamat."',
-							contestant_class='".$kelas."',contestant_school_name='".$nama_sekolah."',
-							contestant_school_address='".$alamat_sekolah."',contestant_supervisor='".$pembimbing."' WHERE contestant_id = '".$id."'");
-			 
+			$data = array(
+						'contestant_name' => $nama,
+						'contestant_phone' => $ponsel,
+						'contestant_address' => $alamat,
+						'contestant_class' => $kelas,
+						'contestant_school_name' => $nama_sekolah,
+						'contestant_school_address' => $alamat_sekolah,
+						'contestant_supervisor' => $pembimbing
+					);
+			$this->db->where('contestant_id',$id);
+			$result = $this->db->update('contestant_high_school',$data);
+			
 		    return $result;
 		}
 		
 		function add_user_university($nama_tim, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
 		{
-			$query = $this->db->query("SELECT contestant_id FROM contestant_university");
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_university');
+			$query = $this->db->get();
+			
 			$result = $query->num_rows()+1;
 			$username = "SPC".$result;
 			$temp = mt_rand(100000,999999);
@@ -289,18 +377,38 @@
 			
 			$temp = mt_rand(100000,999999);
 			$code = date("YHsdim").$temp;
-			$result = $this->db->query("INSERT INTO contestant(contestant_username,contestant_password,contestant_type,contestant_code) VALUES ('".$username."','".$hashpassword."','2','".$code."')");
 			
-			$query = $this->db->query("SELECT contestant_id FROM contestant WHERE contestant_username = '".$username."'");
+			$data = array(
+			   'contestant_username' => $username ,
+			   'contestant_password' => $hashpassword ,
+			   'contestant_type' => '2',
+			   'contestant_code' => $code
+			);
+			$result = $this->db->insert('contestant',$data);
+			
+			$this->db->select('contestant_id');
+			$this->db->from('contestant');
+			$this->db->where('contestant_username',$username);
+			$query = $this->db->get();
 			
 			foreach ($query->result() as $row)
 			{
 				$id = $row->contestant_id;
 			}
-			
-			$this->db->query("INSERT INTO contestant_university(contestant_id,contestant_team_name,contestant_university_name,contestant_university_address,contestant_leader_name,".
-							"contestant_leader_phone,contestant_leader_email,contestant_second_name,contestant_third_name,contestant_supervisor_name) VALUES ".
-							"('".$id."','".$nama_tim."','".$nama_universitas."', '".$alamat_universitas."','".$nama_anggota_satu."','".$ponsel_anggota_satu."','".$email_anggota_satu."','".$nama_anggota_dua."','".$nama_anggota_tiga."','".$nama_pembimbing."')");
+
+			$data = array(
+			   'contestant_id' => $id ,
+			   'contestant_team_name' => $nama_tim ,
+			   'contestant_university_name' => $nama_universitas,
+			   'contestant_university_address' => $alamat_universitas,
+			   'contestant_leader_name' => $nama_anggota_satu ,
+			   'contestant_leader_phone' => $ponsel_anggota_satu ,
+			   'contestant_leader_email' => $email_anggota_satu,
+			   'contestant_second_name' => $nama_anggota_dua,
+			   'contestant_third_name' => $nama_anggota_tiga,
+			   'contestant_supervisor_name' => $nama_pembimbing
+			);
+			$this->db->insert('contestant_university',$data);
 			
 			//email
 			include("Mail.php");
@@ -330,12 +438,18 @@
 		}
 		
 		function update_user_university($id, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
-		{			
-			$result = $this->db->query("UPDATE contestant_university SET contestant_university_name='".$nama_universitas."',
-							contestant_university_address='".$alamat_universitas."',contestant_leader_name='".$nama_anggota_satu."',
-							contestant_leader_phone='".$ponsel_anggota_satu."',
-							contestant_second_name='".$nama_anggota_dua."',contestant_third_name='".$nama_anggota_tiga."',
-							contestant_supervisor_name='".$nama_pembimbing."' WHERE contestant_id = '".$id."'");
+		{		
+			$data = array(
+			   'contestant_university_name' => $nama_universitas,
+			   'contestant_university_address' => $alamat_universitas,
+			   'contestant_leader_name' => $nama_anggota_satu ,
+			   'contestant_leader_phone' => $ponsel_anggota_satu ,
+			   'contestant_second_name' => $nama_anggota_dua,
+			   'contestant_third_name' => $nama_anggota_tiga,
+			   'contestant_supervisor_name' => $nama_pembimbing
+			);
+			$this->db->where('contestant_id',$id);
+			$result = $this->db->update('contestant_university',$data);
 			 
 		    return $result;
 		}
