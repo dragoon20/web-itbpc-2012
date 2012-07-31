@@ -34,11 +34,13 @@
 		<input type="text" class="register" id="anggota_3" name="nama_anggota_tiga" placeholder="Nama Lengkap Anggota Tim #3"> <br>		
 		<br>
 		
-		<?php
-			require_once($_SERVER['DOCUMENT_ROOT'].'/itbpc2012/application/libraries/recaptchalib.php');
-			$publickey = "6LcNUdQSAAAAABwRmWD9DB5TySJP2TKFcg-F45Iy"; // you got this from the signup page
-			echo recaptcha_get_html($publickey);
-		?>
+		<div style="margin-left:10px;">
+			<?php
+				require_once($_SERVER['DOCUMENT_ROOT'].'/itbpc2012/application/libraries/recaptchalib.php');
+				$publickey = "6LcNUdQSAAAAABwRmWD9DB5TySJP2TKFcg-F45Iy"; // you got this from the signup page
+				echo recaptcha_get_html($publickey);
+			?>
+		</div>
 		
 		<br/>
 		<input type="submit" class="register_button" value="Daftar" style="float:right;"/>
