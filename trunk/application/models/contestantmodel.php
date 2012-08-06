@@ -273,6 +273,49 @@
 			return $query->num_rows();
 		}
 		
+		public function check_duplicate_jpc($nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
+		{
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_high_school');
+			$this->db->where('contestant_name',$nama);
+			$this->db->where('contestant_phone',$ponsel);
+			$this->db->where('contestant_address',$alamat);
+			$this->db->where('contestant_email',$email);
+			$this->db->where('contestant_class',$kelas);
+			$this->db->where('contestant_school_name',$nama_sekolah);
+			$this->db->where('contestant_school_address',$alamat_sekolah);
+			$this->db->where('contestant_supervisor',$pembimbing);
+			$query = $this->db->get();
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$result['id'] = $row->contestant_id;
+			}
+			return $result;
+		}
+		
+		public function check_duplicate_spc($nama_tim, $nama_universitas, $alamat_universitas, $nama_anggota_satu, $ponsel_anggota_satu, $email_anggota_satu, $nama_anggota_dua, $nama_anggota_tiga, $nama_pembimbing)
+		{
+			$this->db->select('contestant_id');
+			$this->db->from('contestant_university');
+			$this->db->where('contestant_team_name',$nama_tim);
+			$this->db->where('contestant_university_name',$nama_universitas);
+			$this->db->where('contestant_university_address',$alamat_universitas);
+			$this->db->where('contestant_leader_name',$nama_anggota_satu);
+			$this->db->where('contestant_leader_phone',$ponsel_anggota_satu);
+			$this->db->where('contestant_leader_email',$email_anggota_satu);
+			$this->db->where('contestant_second_name',$nama_anggota_dua);
+			$this->db->where('contestant_third_name',$nama_anggota_tiga);
+			$this->db->where('contestant_supervisor_name',$nama_pembimbing);
+			$query = $this->db->get();
+			$result = array();
+			foreach ($query->result() as $row)
+			{
+				$result['contestant_id'] = $row->contestant_id;
+			}
+			return $result;
+		}
+		
 		function add_user_high_school($nama, $ponsel, $alamat, $email, $kelas, $nama_sekolah, $alamat_sekolah, $pembimbing)
 		{
 			$this->db->select('contestant_id');
@@ -296,6 +339,9 @@
 			);			
 			$result = $this->db->insert('contestant',$data);
 
+			if ($result == 0)
+				return null;
+			
 			$this->db->select('contestant_id');
 			$this->db->from('contestant');
 			$this->db->where('contestant_username',$username);
@@ -317,7 +363,10 @@
 				'contestant_school_address' => $alamat_sekolah,
 				'contestant_supervisor' => $pembimbing
 			);			
-			$this->db->insert('contestant_high_school',$data);
+			$result = $this->db->insert('contestant_high_school',$data);
+			
+			if ($result == 0)
+				return null;
 			
 			//email
 			include("Mail.php");
@@ -327,6 +376,11 @@
 			$subject = "Pendaftaran JPC";
 			$body = "Kepada ".$nama.",\n\nAnda telah berhasil mendaftar sebagai peserta ITB Junior Programming Contest 2012.\nBerikut data username dan password Anda:\n\n".
 					"username: ".$username."\npassword: ".$password."\n\nSelamat bertanding dalam ITB Junior Programming Contest 2012.";
+			
+			$result = array(
+						'username' => $username,
+						'password' => $password,
+					);
 			
 			$headers = array ('From' => $this->from,
 			   'To' => $to,
@@ -340,7 +394,8 @@
 			$mail = $smtp->send($to, $headers, $body);
 			 
 			if (PEAR::isError($mail)) {
-			   echo $mail->getMessage();
+			   //echo $mail->getMessage();
+			   return $result;
 			} else {
 			   return $result;
 			}
@@ -386,6 +441,9 @@
 			);
 			$result = $this->db->insert('contestant',$data);
 			
+			if ($result == 0)
+				return null;
+			
 			$this->db->select('contestant_id');
 			$this->db->from('contestant');
 			$this->db->where('contestant_username',$username);
@@ -408,7 +466,10 @@
 			   'contestant_third_name' => $nama_anggota_tiga,
 			   'contestant_supervisor_name' => $nama_pembimbing
 			);
-			$this->db->insert('contestant_university',$data);
+			$result = $this->db->insert('contestant_university',$data);
+			
+			if ($result == 0)
+				return null;
 			
 			//email
 			include("Mail.php");
@@ -418,6 +479,11 @@
 			$subject = "Pendaftaran SPC";
 			$body = "Kepada ".$nama_tim.",\n\nAnda telah berhasil mendaftar sebagai peserta ITB Junior Programming Contest 2012.\nBerikut data username dan password Anda:\n\n".
 					"username: ".$username."\npassword: ".$password."\n\nSelamat bertanding dalam ITB Junior Programming Contest 2012.";
+			
+			$result = array(
+						'username' => $username,
+						'password' => $password,
+					);
 			
 			$headers = array ('From' => $this->from,
 			   'To' => $to,
@@ -431,7 +497,8 @@
 			$mail = $smtp->send($to, $headers, $body);
 			 
 			if (PEAR::isError($mail)) {
-			   echo $mail->getMessage();
+			   //echo $mail->getMessage();
+			   return $result;
 			} else {
 			   return $result;
 			}
