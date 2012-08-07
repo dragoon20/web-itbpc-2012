@@ -572,7 +572,7 @@
 					else
 					{
 						$i = -1;
-						$flagtemp = 0;
+						$flagtemp = -1;
 						foreach ($templink as $temp)
 						{
 							$i++;
