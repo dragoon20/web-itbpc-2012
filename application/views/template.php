@@ -83,33 +83,33 @@ Released   : 20120203
 					if (isset($_SESSION['contestant_id']))
 					{
 						?>
-						<a href="<?php echo base_url("contestant/logout");?>" style="color:#fff;display:block;width:70px;float:right; margin-right:20px;"> LOGOUT </a>
+						<a id="logout" href="<?php echo base_url("contestant/logout");?>"> LOGOUT </a>
 						<?php
 
 						if ($_SESSION['contestant_type'] == '1')
 						{
 							?>
-							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_jpc");?>" style="color:#fff;display:block;width:120px;float:right;text-align:center;"> EDIT DATA </a>
 							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '2')
 						{
 							?>
-							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> EDIT DATA </a>
+							<a id="edit_data_navigation" href="<?php echo base_url("contestant/halaman_spc");?>" style="color:#fff;display:block;width:120px;float:right;text-align:center;"> EDIT DATA </a>
 							<?php
 						}
 						else if ($_SESSION['contestant_type'] == '3')
 						{
 							?>
-							<a id="manage_spc" href="<?php echo base_url("admin/manage_spc");?>" style="color:#fff;display:block;width:120px;float:right;"> Manage SPC </a>
+							<a id="manage_spc" href="<?php echo base_url("admin/manage_spc");?>" style="color:#fff;display:block;width:120px;float:right;text-align:center;"> Manage SPC </a>
 		
-							<a id="manage_jpc" href="<?php echo base_url("admin/manage_jpc");?>" style="color:#fff;display:block;width:120px;float:right;"> Manage JPC </a>
+							<a id="manage_jpc" href="<?php echo base_url("admin/manage_jpc");?>" style="color:#fff;display:block;width:120px;float:right;text-align:center;"> Manage JPC </a>
 							<?php
 						}
 					}
 					else
 					{?>
-						<a href="javascript:login();" style="color:#fff;display:block;width:70px;"> LOGIN </a>
+						<a id="login" href="javascript:login();" style="color:#fff;display:block;width:90px;text-align:center;"> LOGIN </a>
 					<?php
 					}
 				?>

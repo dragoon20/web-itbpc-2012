@@ -1,4 +1,4 @@
-<div style="width:400px; margin-left:auto; margin-right:auto;">
+<div style="width:500px; margin-left:auto; margin-right:auto;">
 	
 	<form id="form1" action="<?php echo base_url("contestant/upload_kartu_pelajar_universitas?flag=1"); ?>" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 		<label class="left" style="width:35%;">KTM #1</label>
